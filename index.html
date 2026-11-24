@@ -1,4 +1,4 @@
-<title>English Route</title>
+<title>English Route</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%23161a2b'/%3E%3Ctext x='50' y='64' font-size='40' text-anchor='middle' fill='%23ffffff' font-family='Arial' font-weight='bold'%3EER%3C/text%3E%3C/svg%3E">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Onest:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
@@ -22210,13 +22210,34 @@ const bgLessons=s=>s.lessons.filter(l=>l.kind!=='homework');
 const bgPerfect=s=>bgLessons(s).filter(l=>l.total>=5&&l.score===l.total).length;
 const bgDays=s=>new Set(s.lessons.map(l=>(l.date||'').slice(0,10)).filter(Boolean)).size;
 const bgMedals=s=>s.lessons.reduce((n,l)=>n+((l.medals||[]).length),0);
+/* ===== progress tools (teacher): code to move progress between devices, backup of all students, remove last lesson ===== */
+const SITE_UPDATED={en:'Last update: 24 Nov 2026',ua:'Останнє оновлення: 24 листопада 2026'};
+let PT={step:''};
+function progressCode(p){const d={v:1,name:p.name,level:p.level,createdAt:p.createdAt,progress:p.progress||{},mistakes:p.mistakes||[],words:p.words||[]};return 'ERPR1:'+btoa(unescape(encodeURIComponent(JSON.stringify(d))))}
+function decodeProgressCode(code){const c=String(code||'').trim();if(!c.startsWith('ERPR1:'))throw new Error('bad');const d=JSON.parse(decodeURIComponent(escape(atob(c.slice(6)))));if(!d||!d.name)throw new Error('bad');return d}
+function lastLessonId(p){const e=Object.entries(p.progress||{}).filter(([k,v])=>v&&v.status);if(!e.length)return null;e.sort((a,b)=>String(b[1].date||'').localeCompare(String(a[1].date||'')));return e[0][0]}
+function openRestoreCode(){openModal(()=>{const ta=h('textarea',{rows:4,placeholder:'ERPR1:…',style:'width:100%'});const err=h('p',{style:'margin:0;color:var(--muted)'},'');
+ const fi=h('input',{type:'file',accept:'.txt',onchange:async e=>{const f=e.target.files[0];if(f)ta.value=await f.text()}});
+ const go=()=>{try{const d=decodeProgressCode(ta.value);const all=Store.students||{};const sid=Object.keys(all).find(k=>all[k]&&all[k].name===d.name);const id=sid||uid();const base=sid?all[sid]:blankStudent(d.name,d.level||'A1',[]);Store.save(id,{...base,name:d.name,level:d.level||base.level,progress:d.progress||{},mistakes:d.mistakes||[],words:d.words||[]});closeModal();setStudent(id);toast('Progress restored: '+d.name)}catch(e){err.textContent='This code is not valid.'}};
+ return[h('h2',null,'Restore progress from a code'),h('p',{style:'margin:0'},'Paste the code or choose the file. If a student with this name already exists, their progress is replaced.'),ta,fi,err,h('div',{class:'foot',style:'margin:0'},h('button',{class:'btn primary',onclick:go},'Restore'),h('button',{class:'btn ghost',onclick:closeModal},'Cancel'))]})}
+function progressTools(p){const box=h('div',{class:'section',style:'margin-top:18px'});
+ box.append(h('h3',null,'Progress tools'));
+ box.append(h('div',{class:'foot',style:'margin:0;flex-wrap:wrap'},
+  h('button',{class:'btn',onclick:()=>copyText(progressCode(p),'Progress code copied. Paste it on your other device')},'📋 Copy progress code'),
+  h('button',{class:'btn',onclick:openRestoreCode},'📥 Restore from code'),
+  h('button',{class:'btn',onclick:()=>saveFile(`all-students-${today()}.json`,JSON.stringify(Store.students||{},null,1),'application/json')},'💾 Back up all students')));
+ const last=lastLessonId(p);
+ if(last){const t=TOPIC[last]?TOPIC[last].title:last;
+  if(PT.step==='drop'){box.append(h('div',{class:'banner',style:'margin-top:10px'},`Remove the progress of «${t}» for ${p.name}? Make a backup first.`),h('div',{class:'foot',style:'margin-top:8px'},h('button',{class:'btn primary',onclick:()=>{delete p.progress[last];Store.save(p.id,p);PT.step='';render()}},'Yes, remove'),h('button',{class:'btn ghost',onclick:()=>{PT.step='';render()}},'No')))}
+  else box.append(h('div',{class:'foot',style:'margin:10px 0 0'},h('button',{class:'btn',onclick:()=>{PT.step='drop';render()}},`Remove last lesson (${t})`)))}
+ return box}
 function renderStudents(root){const list=Store.list();
  if(!list.length){root.append(h('div',{class:'empty'},h('h2',null,Store.ready?'No students yet':'Loading students…'),h('p',null,'Add your first student, or import a student card from the Trial lesson project.'),h('div',{class:'foot',style:'justify-content:center'},h('button',{class:'btn primary',onclick:()=>openAddStudent()},'Add student'),h('button',{class:'btn',onclick:openImportCard},'Import student card'))));return}
  if(!S.profileId||!Store.get(S.profileId))S.profileId=S.studentId&&Store.get(S.studentId)?S.studentId:list[0].id;const p=Store.get(S.profileId);
  const side=h('aside',{class:'side'},h('div',{class:'eyebrow',style:'padding:0 10px'},`${list.length} student${list.length>1?'s':''}`),
   list.map((s,i)=>h('button',{class:'srow enter',style:`--i:${i}`,'aria-current':String(s.id===p.id),onclick:()=>{S.profileId=s.id;S.confirmDel=false;render()}},h('span',{class:'avatar'},initials(s.name)),h('span',{style:'min-width:0;flex:1'},h('div',{class:'n'},s.name,s.example?h('span',{class:'chip',style:'margin-left:6px;font-size:11px'},'example'):null),h('div',{class:'s'},`${Object.values(s.progress).filter(x=>x.status==='done').length} topics · ${s.words.length} words`)),h('span',{class:'lvl',style:`--lc:${LV[s.level].c}`},s.level))),
   h('button',{class:'btn',style:'margin-top:6px',onclick:()=>openAddStudent()},'+ Add student'),h('button',{class:'btn ghost',style:'margin-top:6px',onclick:openImportCard},'Import student card'));
- root.append(h('div',{class:'split'},side,profileView(p)))}
+ root.append(h('div',{class:'split'},side,profileView(p)));root.append(progressTools(p))}
 function stat(v,l,d){return h('div',{class:'stat'},h('div',{class:'v'},v),h('div',{class:'l'},l),h('div',{class:'d hintbase'},d))}
 /* ===== level: estimated from finished lessons, each level counts as reached at 50% (same rule as the exam unlock) ===== */
 const LEVEL_INFO={
@@ -22280,7 +22301,7 @@ function render(fromSnap){if(APP_MODE==='trial'&&(S.view==='map'||S.view==='stud
  if(fromSnap&&document.activeElement&&document.activeElement.matches('input,select,textarea')&&document.activeElement.closest('#main')){renderTop();return}
  clearInterval(window.__tm);hideTip();renderTop();const main=document.getElementById('main');main.className='wrap'+(S.view==='run'||S.view==='hw'?' wide':'');main.replaceChildren();
  ({map:renderMap,run:renderRun,trial:renderTrial,students:renderStudents,hw:renderHomework})[S.view](main);
- renderDock();if(S.lang==='ua'&&S.view==='students')try{uaDom(main)}catch(e){}langFab();onScroll()}
+ renderDock();if(S.lang==='ua'&&S.view==='students')try{uaDom(main)}catch(e){}if(S.view==='map')main.append(h('p',{class:'hintbase',style:'text-align:center;margin:24px 0 8px'},T2(SITE_UPDATED)));langFab();onScroll()}
 function onScroll(){const b=document.getElementById('pbar');if(!b)return;if(S.view!=='run'&&S.view!=='hw'){b.style.width='0';return}const d=document.documentElement;const max=d.scrollHeight-window.innerHeight;b.style.width=(max>0?Math.min(100,window.scrollY/max*100):0)+'%'}
 window.addEventListener('scroll',onScroll,{passive:true});
 document.addEventListener('keydown',e=>{
