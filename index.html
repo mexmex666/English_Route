@@ -11050,17 +11050,151 @@ const RVW_S={id:'S',type:'speak',title:{en:'Then and now: talk about your life',
   it:{em:'💻',q:"Tell about technology: what did you use to use before smartphones? What did you do when you were a child? What is different nowadays?"},
   music:{em:'🎸',q:"Tell about music: what songs did you use to listen to? What songs do you really like now? What memory do you have of a concert?"},
   sport:{em:'🏅',q:"Tell about sport: what sport did you use to play? Do you still play it? Who was your strict coach? What do you miss?"}}};
+/* ================= B1.1 · BLOCK 1 · TENSES REVIEW + STATE VERBS + EMPHATIC DO + USED TO (REMAKE) ================= */
+const RVWR_VOCAB=[
+ {t:'remember',type:'word',pos:'verb',em:'🧠',m:'to have a memory of something from the past',ua:'пам\'ятати',e:'I remember that summer very well.',re:'remember'},
+ {t:'believe',type:'word',pos:'verb',em:'💭',m:'to think that something is true',ua:'вірити, вважати',e:'I believe you. It is true.',re:'believe'},
+ {t:'belong',type:'word',pos:'verb',em:'🏠',m:'to be the property of someone',ua:'належати',e:'This old bike belongs to my brother.',re:'belong'},
+ {t:'childhood',type:'word',pos:'noun',em:'🧸',m:'the years when you were a child',ua:'дитинство',e:'My childhood was happy.',re:'childhood'},
+ {t:'habit',type:'word',pos:'noun',em:'🔁',m:'something you do regularly',ua:'звичка',e:'Reading before bed is a good habit.',re:'habit'},
+ {t:'grow up',type:'word',pos:'phrasal v',em:'🌱',m:'to change from a child into an adult',ua:'вирости',e:'I grew up in a small town.',re:'grow up'},
+ {t:'used to',type:'word',pos:'modal',em:'🕰️',m:'a habit or state in the past that is over now',ua:'раніше (звичка в минулому)',e:'I used to play football every day.',re:'used to'},
+ {t:'would',type:'word',pos:'modal',em:'🌳',m:'a repeated action in the past (not a state)',ua:'раніше (повторювана дія)',e:'We would walk to school together.',re:'would'}];
+const RVWR_A={id:'A',type:'sec',l:'A',h:{en:'Tenses: choose by the time words',ua:'Часи: обирай за словами часу'},nocx:true,
+ pts:[{k:'when',en:"The <b>time words</b> show the tense: <b>every day</b> → Present Simple (<b>I work every day</b>). <b>now</b> → Present Continuous (<b>I am working now</b>). <b>yesterday</b> → Past Simple (<b>I worked yesterday</b>). <b>since / already / yet</b> → Present Perfect (<b>I have worked here since May</b>).",ua:"<b>Слова часу</b> показують час: <b>every day</b> → Present Simple (<b>I work every day</b>). <b>now</b> → Present Continuous (<b>I am working now</b>). <b>yesterday</b> → Past Simple (<b>I worked yesterday</b>). <b>since / already / yet</b> → Present Perfect (<b>I have worked here since May</b>)."},
+  {k:'wr',wrong:'I am work here every day.',right:'I work here every day.',why:{en:'<b>every day</b> = a habit: Present Simple.',ua:'<b>every day</b> = звичка: Present Simple.'}},
+  {k:'wr',wrong:'Yesterday I work in the garden.',right:'Yesterday I worked in the garden.',why:{en:'<b>yesterday</b> = Past Simple.',ua:'<b>yesterday</b> = Past Simple.'}}],
+ parts:[{t:'table',nocx:true,head:{en:['Time words','Tense'],ua:['Слова часу','Час']},rows:[
+   ['every day, usually, always','Present Simple'],['now, at the moment','Present Continuous'],['yesterday, last week, in 2019','Past Simple'],['since, for, already, yet','Present Perfect']]}]};
+const RVWR_B={id:'B',type:'sec',l:'B',h:{en:'State verbs: no -ing',ua:'Дієслова стану: без -ing'},nocx:true,
+ pts:[{k:'when',en:"Verbs of <b>state</b> (know, like, want, need, believe, remember, belong, have = own) are not used in the continuous. Say: <b>I know the answer.</b> Not: <b>I am knowing</b>. Also: <b>This bag belongs to me.</b> Not: <b>This bag is belonging to me.</b>",ua:"Дієслова <b>стану</b> (know, like, want, need, believe, remember, belong, have = «мати») не вживаються в continuous. Кажемо: <b>I know the answer.</b> Не: <b>I am knowing</b>. Також: <b>This bag belongs to me.</b> Не: <b>This bag is belonging to me.</b>"},
+  {k:'wr',wrong:'I am knowing the answer.',right:'I know the answer.',why:{en:'<b>know</b> is a state verb: no -ing.',ua:'<b>know</b> — дієслово стану: без -ing.'}},
+  {k:'wr',wrong:'She is having two cars.',right:'She has two cars.',why:{en:'<b>have</b> = to own: simple form.',ua:'<b>have</b> = володіти: проста форма.'}}],
+ parts:[]};
+const RVWR_C={id:'C',type:'sec',l:'C',h:{en:'Emphatic do: I do like it!',ua:'Підсилювальне do: I do like it!'},nocx:true,
+ pts:[{k:'when',en:"Use <b>do / does / did + the base verb</b> to stress that something is true: <b>I do like it!</b> <b>He does work hard.</b> <b>She did call you yesterday!</b> Use it when someone doubts you, or to be polite: <b>Do sit down.</b>",ua:"<b>do / does / did + базове дієслово</b> підкреслює, що це правда: <b>I do like it!</b> <b>He does work hard.</b> <b>She did call you yesterday!</b> Вживаємо, коли хтось сумнівається, або ввічливо: <b>Do sit down.</b>"},
+  {k:'wr',wrong:'I do liked it!',right:'I do like it!',why:{en:'After <b>do</b> the base form: <b>like</b>.',ua:'Після <b>do</b> — базова форма: <b>like</b>.'}},
+  {k:'wr',wrong:'He does works hard.',right:'He does work hard.',why:{en:'After <b>does</b> the base form: <b>work</b>.',ua:'Після <b>does</b> — базова форма: <b>work</b>.'}}],
+ parts:[]};
+const RVWR_D={id:'D',type:'sec',l:'D',h:{en:'used to and would: past habits',ua:'used to і would: звички в минулому'},nocx:true,
+ pts:[{k:'when',en:"<b>used to + base verb</b> = a habit or a state in the past that is over: <b>I used to live in Lviv.</b> <b>would + base verb</b> = a repeated action in the past, not a state: <b>We would walk to school.</b> Negative and question: <b>I didn't use to smoke.</b> <b>Did you use to play?</b>",ua:"<b>used to + базове дієслово</b> = звичка або стан у минулому, який закінчився: <b>I used to live in Lviv.</b> <b>would + базове дієслово</b> = повторювана дія в минулому, не стан: <b>We would walk to school.</b> Заперечення і питання: <b>I didn't use to smoke.</b> <b>Did you use to play?</b>"},
+  {k:'wr',wrong:'I used to living in Lviv.',right:'I used to live in Lviv.',why:{en:'After <b>used to</b> the base form.',ua:'Після <b>used to</b> — базова форма.'}},
+  {k:'wr',wrong:'She would have a red bike when she was little.',right:'She had a red bike when she was little.',why:{en:'<b>would</b> is not used for states (have): use Past Simple or <b>used to</b>.',ua:'<b>would</b> не використовують для станів (have): ставимо Past Simple або <b>used to</b>.'}}],
+ parts:[]};
+const RVWR_V=vgap('v1','W',[
+ {s:'I [remember] that summer very well.',ua:'Я добре пам\'ятаю те літо.',d:['forget']},
+ {s:'This old bike [belongs] to my brother.',ua:'Цей старий велосипед належить моєму братові.',d:['belong to me']},
+ {s:'My [childhood] was happy and calm.',ua:'Моє дитинство було щасливим і спокійним.',d:['childhoods']},
+ {s:'Reading before bed is a good [habit].',ua:'Читати перед сном — гарна звичка.',d:['hobby']},
+ {s:'I [grew up] in a small town.',ua:'Я виріс у маленькому містечку.',d:['grow']},
+ {s:'I [used to] play football every day.',ua:'Раніше я щодня грав у футбол.',d:['use to']},
+ {s:'We [would] walk to school together.',ua:'Раніше ми разом ходили до школи пішки.',d:['will']},
+ {s:'I [believe] you. It is true.',ua:'Я вірю тобі. Це правда.',d:['believe in']}]);
+const RVWR_E1={id:'e1',type:'mcq',sec:'A',nocx:true,ins:{en:'Choose the right tense for the time word.',ua:'Обери правильний час за словом часу.'},why:{en:'Time words show the tense',ua:'Слова часу показують час'},bank:[
+ {q:'I ___ to the gym every morning.',o:['go','am going','went'],ua:'Я ходжу в спортзал щоранку.'},
+ {q:'Look! It ___ right now.',o:['is raining','rains','rained'],ua:'Дивись! Зараз іде дощ.'},
+ {q:'We ___ the film last night.',o:['watched','have watched','watch'],ua:'Ми дивилися фільм учора ввечері.'},
+ {q:'She ___ in London since 2020.',o:['has lived','lived','lives'],ua:'Вона живе в Лондоні з 2020 року.'},
+ {q:'They ___ already ___ dinner.',o:['have / eaten','had / eaten','are / eating'],ua:'Вони вже повечеряли.'},
+ {q:'He ___ his keys yesterday.',o:['lost','has lost','is losing'],ua:'Він загубив ключі вчора.'}]};
+const RVWR_E2={id:'e2',type:'gap',sec:'A',nocx:true,n:3,ins:{en:'Write the missing word.',ua:'Напиши пропущене слово.'},why:{en:'Time words show the tense',ua:'Слова часу показують час'},bank:[
+ {s:'I [work] here every day.',ua:'Я тут працюю щодня.',d:['worked','working']},
+ {s:'Right now she [is] reading a book.',ua:'Зараз вона читає книжку.',d:['was','has']},
+ {s:'We [moved] here last year.',ua:'Ми переїхали сюди минулого року.',d:['move','have moved']},
+ {s:'I [have] never been to Italy.',ua:'Я ніколи не був в Італії.',d:['had','was']},
+ {s:'He [has] lived here for ten years.',ua:'Він живе тут десять років.',d:['had','was']},
+ {s:'They [are] playing games now.',ua:'Вони зараз грають в ігри.',d:['was','play']}]};
+const RVWR_E3={id:'e3',type:'mcq',sec:'B',nocx:true,ins:{en:'Choose the correct form.',ua:'Обери правильну форму.'},why:{en:'State verbs: simple form only',ua:'Дієслова стану: лише проста форма'},bank:[
+ {q:'I ___ the answer. It is easy.',o:['know','am knowing','knowing'],ua:'Я знаю відповідь. Це легко.'},
+ {q:'This phone ___ to my sister.',o:['belongs','is belonging','belonging'],ua:'Цей телефон належить моїй сестрі.'},
+ {q:'She ___ a new car now.',o:['has','is having','having'],ua:'Зараз у неї нова машина.'},
+ {q:'We ___ you very much.',o:['like','are liking','liking'],ua:'Ми дуже любимо тебе.'},
+ {q:'I ___ that film. It was great.',o:['remember','am remembering','remembering'],ua:'Я пам\'ятаю той фільм. Він був чудовий.'},
+ {q:'He ___ the truth. He is honest.',o:['believes','is believing','believing'],ua:'Він вірить правді. Він чесний.'}]};
+const RVWR_E4={id:'e4',type:'gap',sec:'C',nocx:true,n:3,ins:{en:'Add do, does or did before the verb to stress it.',ua:'Додай do, does або did перед дієсловом для підсилення.'},why:{en:'Emphatic do: do / does / did + base verb',ua:'Підсилювальне do: do / does / did + базове дієслово'},bank:[
+ {s:'I [do] like your new shoes!',ua:'Мені справді подобаються твої нові черевики!',d:['am','did']},
+ {s:'She [does] speak French very well.',ua:'Вона справді добре говорить французькою.',d:['is','has']},
+ {s:'He [did] call you yesterday, I promise.',ua:'Він справді дзвонив тобі вчора, обіцяю.',d:['was','had']},
+ {s:'[Do] sit down, please.',ua:'Будь ласка, сідайте.',d:['Be','Are']},
+ {s:'We [do] want to help you.',ua:'Ми справді хочемо тобі допомогти.',d:['are','have']},
+ {s:'They [did] finish the report on time.',ua:'Вони справді вчасно закінчили звіт.',d:['were','had']}]};
+const RVWR_E5={id:'e5',type:'mcq',sec:'C',nocx:true,ins:{en:'Which sentence is emphatic?',ua:'Яке речення з підсиленням?'},why:{en:'do / does / did + base verb',ua:'do / does / did + базове дієслово'},bank:[
+ {q:'I ___ like this song, I really do!',o:['do','am','is'],ua:'Мені справді подобається ця пісня!'},
+ {q:'She ___ say sorry, and she meant it.',o:['did say','was say','say'],ua:'Вона справді вибачилась, і це було щиро.'},
+ {q:'It ___ rain yesterday, but we went out.',o:['did rain','was rain','rained did'],ua:'Вчора справді йшов дощ, але ми вийшли.'},
+ {q:'I ___ know the answer! Trust me.',o:['do','am','did know'],ua:'Я справді знаю відповідь! Повір мені.'},
+ {q:'___ come in and have a seat.',o:['Do','Are','Did'],ua:'Заходьте і сідайте.'},
+ {q:'He ___ work late every night.',o:['does','is','has'],ua:'Він справді працює допізна щовечора.'}]};
+const RVWR_E6={id:'e6',type:'mcq',sec:'D',nocx:true,ins:{en:'Choose used to or would (or Past Simple).',ua:'Обери used to, would (або Past Simple).'},why:{en:'used to: habit or state; would: repeated action (not states)',ua:'used to: звичка або стан; would: повторювана дія (не стан)'},bank:[
+ {q:'When I was a child, I ___ live in a village.',o:['used to','would','am used to'],ua:'Коли я був дитиною, я жив у селі.'},
+ {q:'My grandfather ___ have a big garden.',o:['had','would','was used to'],ua:'У мого дідуся був великий сад.'},
+ {q:'I didn\'t ___ eat fish, but now I do.',o:['use to','used to','would'],ua:'Раніше я не їв рибу, а зараз їм.'},
+ {q:'___ you ___ play the piano?',o:['Did / use to','Did / used to','Were / used to'],ua:'Ти раніше грав на піаніно?'},
+]};
+const RVWR_E7={id:'e7',type:'order',sec:'A',nocx:true,ins:{en:'Put the words in order.',ua:'Розстав слова в правильному порядку.'},why:{en:'Time word + subject + verb',ua:'Слово часу + підмет + дієслово'},bank:[
+ {w:'I work here every day',p:'.',ua:'Я тут працюю щодня.',d:['I every day work here','every day I here work']},
+ {w:'she has lived here since 2020',p:'.',ua:'Вона тут живе з 2020 року.',d:['she has here lived since 2020','she since 2020 has lived here']},
+ {w:'I used to play football',p:'.',ua:'Раніше я грав у футбол.',d:['I play to used football','I to used play football']},
+ {w:'we would walk to school',p:'.',ua:'Раніше ми ходили до школи пішки.',d:['we walk would to school','we to walk school would']},
+ {w:'I do like this song',p:'!',ua:'Мені справді подобається ця пісня!',d:['I like do this song','I this do like song']},
+ {w:'did you use to play the piano',p:'?',ua:'Ти раніше грав на піаніно?',d:['you did use to play the piano','use you did to play the piano']}]};
+const RVWR_E8={id:'e8',type:'which',sec:'D',nocx:true,ins:{en:'Which sentence is correct?',ua:'Яке речення правильне?'},hardIns:{en:'This sentence has a mistake. Write it correctly.',ua:'У цьому реченні помилка. Напиши його правильно.'},bank:[
+ [['I used to live in Lviv.'],['I used to living in Lviv.','I use to live in Lviv.','I used to live in Lviv.'],['I am used to live in Lviv.','I used live in Lviv.','I used to live in Lviv.']],
+ [['I know the answer.'],['I am knowing the answer.','I know the answer.','I knows the answer.'],['I know the answer.','I have knowing the answer.','I am know the answer.']],
+ [['He does work hard!'],['He does works hard!','He do work hard!','He does work hard!'],['He does work hard!','He is doing work hard!','He does worked hard!']],
+ [['We would walk to school.'],['We would walked to school.','We would to walk to school.','We would walk to school.'],['We would walks to school.','We would walk to school.','We would have walk to school.']]].map(o=>({o,ua:''}))};
+const RVWR_E9={id:'e9',type:'error',sec:'D',nocx:true,ins:{en:'Find the mistake and fix it.',ua:'Знайди помилку й виправ її.'},bank:[
+ {w:'I [am knowing] the answer.',fix:['know'],o:['know','am knowing','knows'],full:'I know the answer.',ua:'Я знаю відповідь.',why:{en:'state verb: simple form',ua:'дієслово стану: проста форма'}},
+ {w:'She [used to living] in Kyiv.',fix:['used to live'],o:['used to live','used to living','use to live'],full:'She used to live in Kyiv.',ua:'Раніше вона жила в Києві.',why:{en:'used to + base verb',ua:'used to + базове дієслово'}},
+ {w:'I [do liked] it!',fix:['do like'],o:['do like','do liked','did like'],full:'I do like it!',ua:'Мені справді подобається!',why:{en:'emphatic do + base verb',ua:'підсилювальне do + базове дієслово'}},
+ {w:'Yesterday I [work] in the garden.',fix:['worked'],o:['worked','work','working'],full:'Yesterday I worked in the garden.',ua:'Учора я працював у саду.',why:{en:'yesterday = Past Simple',ua:'yesterday = Past Simple'}},
+ {w:'We [would have] a dog when we were kids.',fix:['had'],o:['had','would have','used'],full:'We had a dog when we were kids.',ua:'У нас був пес, коли ми були дітьми.',why:{en:'would is not used for states: had',ua:'would не для станів: had'}}]};
+const RVWR_K={id:'K',type:'sec',l:'K',h:{en:'Typical mistakes',ua:'Типові помилки'},nocx:true,pts:[{k:'when',en:'Read the wrong sentence and say it correctly. Then reveal the answer.',ua:'Прочитай неправильне речення й скажи його правильно. Потім відкрий відповідь.'}],
+ parts:[{t:'mist',n:5,bank:[
+  ['I am knowing the answer.','I know the answer.'],['She used to living in Kyiv.','She used to live in Kyiv.'],['I do liked it!','I do like it!'],
+  ['I would have a red bike when I was small.','I had a red bike when I was small.'],['Yesterday I work in the garden.','Yesterday I worked in the garden.']]}]};
+const RVWR_BLITZ=[
+ ['I ___ to school every day.','go','went','am going'],['Look! It ___ now.','is raining','rains','rained'],['We ___ the film last night.','watched','watch','have watched'],['She ___ here since 2020.','has lived','lived','lives'],
+ ['I ___ the answer.','know','am knowing','knowing'],['This bag ___ to me.','belongs','is belonging','belonging'],['He ___ the truth.','believes','is believing','believing'],['She ___ a new car.','has','is having','having'],
+['He ___ call you yesterday!','did','does','do'],
+ ['When I was a child, I ___ live in a village.','used to','use to','am used to'],['We ___ walk to school together.','would','will','were'],
+ ['🧸 the years when you were a child','childhood','childish','child'],['🔁 something you do regularly','habit','hobby','habitat'],['🌱 change into an adult','grow up','grow down','give up'],['🧠 have a memory of','remember','forget','remind']].map(([q,...o])=>({q,o}));
+const RVWR_GAME={id:'g1',type:'game',kind:'blitz',em:'🕰️',title:{en:'Tenses and used to: 60 seconds',ua:'Часи і used to: 60 секунд'},rules:{en:'Pick the right form or word. Keys 1 · 2 · 3 work too.',ua:'Обирай правильну форму або слово. Можна клавішами 1 · 2 · 3.'},items:RVWR_BLITZ};
+const RVWR_CHAT={id:'J',type:'sec',l:'💬',h:{en:'Model conversations: then and now',ua:'Зразки розмов: тоді і зараз'},nocx:true,
+ pts:[{k:'when',en:"First read them together. Find the time words (<b>every day, now, yesterday, since</b>), <b>used to</b> and <b>would</b> for the past, and the emphatic <b>do</b>. Then switch to <b>Role-play</b> and tell about your childhood.",ua:"Спершу прочитайте разом. Знайдіть слова часу (<b>every day, now, yesterday, since</b>), <b>used to</b> і <b>would</b> для минулого та підсилювальне <b>do</b>. Потім перейдіть до <b>Role-play</b> і розкажіть про своє дитинство."}],
+ parts:[{t:'chat',people:{A:{name:'Anna',em:'👩'},B:{name:'Max',em:'🧑'}},lines:[
+  ['A',"What did you use to do after school?",'',"Що ти раніше робив після школи?","used to do"],
+  ['B',"I used to play football every day. We would walk to the field together.",'',"Я щодня грав у футбол. Ми разом ходили на поле пішки.","used to · would"],
+  ['A',"Do you still play?",'',"Ти досі граєш?","still play"],
+  ['B',"Not really. I work every day now, so I do miss it!",'',"Не дуже. Зараз я працюю щодня, тож я справді сумую за цим!","work every day · do miss"]]},
+  {t:'chat',people:{A:{name:'Nina',em:'👧'},B:{name:'Tom',em:'🧑'}},lines:[
+  ['A',"Tom, you look happy! What have you been doing?",'',"Томе, ти виглядаєш щасливим! Чим ти займався?","have been doing"],
+  ['B',"I have moved to a new flat, and I do love it!",'',"Я переїхав у нову квартиру, і вона мені справді подобається!","have moved · do love"],
+  ['A',"I remember your old flat. You used to hate the noise!",'',"Я пам'ятаю твою стару квартиру. Ти раніше ненавидів шум!","used to hate"],
+  ['B',"True. It belongs to a noisy family now, so I am glad I moved.",'',"Правда. Тепер вона належить галасливій родині, тож я радий, що переїхав.","belongs to"]]}]};
+const RVWR_S={id:'S',type:'speak',title:{en:'Then and now',ua:'Тоді і зараз'},prevVocab:true,
+ grammar:["time words: every day, now, yesterday, since","state verbs: know, like, believe, belong (no -ing)","emphatic do: I do like it!","used to and would for past habits"],earlier:["Present Perfect: have been + -ing, for and since"],
+ prompts:{
+  general:{em:'🌍',q:"Tell about your childhood: What did you use to do after school? Where did you use to live? What would you do every summer? What do you still like today?"},
+  life:{em:'🌱',q:"Your home: What did you use to cook on Sundays? What do you do now every day? Did you use to clean on Saturdays? Which habit do you want to change?"},
+  games:{em:'🎮',q:"Games: What did you use to play as a child? What do you play now? Did you use to win often? What would you play with your friends after school?"},
+  series:{em:'🎬',q:"A series: What did the hero use to do before the story started? What do you believe about the ending? Did you use to watch cartoons? What do you watch now?"},
+  travel:{em:'✈️',q:"A trip: Where did you use to go on holiday? Do you still travel the same way? What would you do on a long trip? What do you remember most?"},
+  it:{em:'💻',q:"Technology: What did you use to have on your first phone? What do you use now? What would you do with an old computer? Do you still remember your first password?"},
+  music:{em:'🎸',q:"Music: What did you use to listen to as a teenager? What do you listen to now? Did you use to play an instrument? What do you believe is the best song ever?"},
+  sport:{em:'🏅',q:"Sport: What sport did you use to play? What do you play now? Would you run every morning when you were young? What habit helps you the most?"}}};
 BE_LESSONS['b1-rev']={unit:'B1.1 · Block 1 · Tenses',
- lead:{en:'Welcome to B1: a tense review, state verbs, emphatic do (I do like it!) and past habits with used to and would.',ua:'Ласкаво просимо до B1: огляд часів, дієслова стану, підсилювальне do (I do like it!) і звички в минулому з used to та would.'},minutes:'≈ 60 min · 7 steps',
- homework:'Do the homework file. Then write 10 sentences about your childhood and today. Use used to, would, one emphatic do and two state verbs.',
- vocab:RVW_VOCAB,
- goals:{en:['Choose the right tense by the <b>time words</b>','<b>State verbs</b>: I know, not I am knowing','<b>Emphatic do</b>: I do like it! · He did call you!','<b>used to</b> and <b>would</b> for past habits'],ua:['Обирати час за <b>словами часу</b>','<b>Дієслова стану</b>: I know, а не I am knowing','<b>Підсилювальне do</b>: I do like it! · He did call you!','<b>used to</b> і <b>would</b> для звичок у минулому']},
+ lead:{en:'Welcome to B1: a tense review by time words, state verbs, emphatic do (I do like it!) and past habits with used to and would.',ua:'Ласкаво просимо до B1: огляд часів за словами часу, дієслова стану, підсилювальне do (I do like it!) і звички в минулому з used to та would.'},minutes:'≈ 60 min · 7 steps',
+ homework:'Do the homework file. Then write 10 sentences about your childhood and today: 3 with used to, 2 with would, 2 with emphatic do and 3 with state verbs.',
+ vocab:RVWR_VOCAB,
+ goals:{en:['Choose the tense by the <b>time words</b>','<b>State verbs</b>: I know, not I am knowing','<b>Emphatic do</b>: I do like it! · He did call you!','<b>used to</b> and <b>would</b> for past habits'],ua:['Обирати час за <b>словами часу</b>','<b>Дієслова стану</b>: I know, а не I am knowing','<b>Підсилювальне do</b>: I do like it! · He did call you!','<b>used to</b> і <b>would</b> для звичок у минулому']},
  blocks:[{...stage(0,'warm',1),sub:{en:'Words from the last A2 lesson and a quick recap',ua:'Слова з останнього уроку A2 і швидке повторення'}},{id:'W0',type:'warm',from:'a2-link'},RVW_RECAP,
-  {...stage(0,'words',2),sub:{en:'8 words about the past and habits',ua:'8 слів про минуле і звички'}},wordsSec('W','b1-rev',{en:'Eight words about the past and habits. Learn them first: the grammar examples use them.',ua:'Вісім слів про минуле і звички. Вивчи їх спершу: приклади граматики з ними.'}),{...POOL.e15,id:'e15',sec:'W',easyUA:true},RVW_V,
-  {...stage(0,'gram',3),min:'15 min',sub:{en:'Tenses, state verbs, emphatic do, used to',ua:'Часи, дієслова стану, підсилювальне do, used to'}},RVW_A,RVW_B,RVW_C,RVW_D,
-  {...stage(0,'prac',4),min:'20 min',sub:{en:'Choose, compare, correct',ua:'Вибір, порівняння, виправлення'}},RVW_E1,RVW_E2,RVW_E3,RVW_E4,RVW_E5,RVW_E6,RVW_E7,RVW_E8,RVW_E9,RVW_K,
-  stage(0,'game',5),RVW_GAME,
-  stage(0,'speak',6),RVW_CHAT,RVW_S]};
+  {...stage(0,'words',2),sub:{en:'8 words about the past and habits',ua:'8 слів про минуле і звички'}},wordsSec('W','b1-rev',{en:'Eight words about the past and habits. Learn them first: the grammar examples use them.',ua:'Вісім слів про минуле і звички. Вивчи їх спершу: приклади граматики з ними.'}),{...POOL.e15,id:'e15',sec:'W',easyUA:true},RVWR_V,
+  {...stage(0,'gram',3),min:'15 min',sub:{en:'Time words, state verbs, emphatic do, used to',ua:'Слова часу, дієслова стану, підсилювальне do, used to'}},RVWR_A,RVWR_B,RVWR_C,RVWR_D,
+  {...stage(0,'prac',4),min:'20 min',sub:{en:'Choose, complete, correct',ua:'Вибір, доповнення, виправлення'}},RVWR_E1,RVWR_E2,RVWR_E3,RVWR_E4,RVWR_E5,RVWR_E6,RVWR_E7,RVWR_E8,RVWR_E9,RVWR_K,
+  stage(0,'game',5),RVWR_GAME,
+  stage(0,'speak',6),RVWR_CHAT,RVWR_S]};
+
 
 /* map: first B1 lesson */
 (()=>{if(TOPIC['b1-rev'])return;const i=TOPICS.findIndex(t=>t.id==='b1-pp-exp');if(i<0)return;const t={...T('b1-rev','B1','B1 start · Tenses review, emphatic do, used to','grammar',true,false),unit:'B1.1 · Block 1 · Tenses'};
@@ -18699,9 +18833,305 @@ BE_LESSONS['b1-phv2']={unit:'B1.1 · Block 10 · Prepositions & words',
   {...stage(0,'prac',4),min:'20 min',sub:{en:'Choose, complete, correct',ua:'Вибір, доповнення, виправлення'}},PHV2_E1,PHV2_E2,PHV2_E3,PHV2_E4,PHV2_E5,PHV2_E6,PHV2_E7,PHV2_E8,PHV2_E9,PHV2_K,
   stage(0,'game',5),PHV2_GAME,
   stage(0,'speak',6),PHV2_CHAT,PHV2_S]};
+/* ================= B1.1 · BLOCK 10 · PHRASAL VERBS 3 (NEW) ================= */
+const PHV3_VOCAB=[
+ {t:'look after',type:'word',pos:'phrasal v',em:'👶',m:'to take care of someone or something',ua:'доглядати',e:'My grandmother looks after the cat when we travel.',re:'look after'},
+ {t:'run out of',type:'word',pos:'phrasal v',em:'🥛',m:'to have no more of something left',ua:'закінчитися (про запас)',e:'We have run out of milk. Can you buy some?',re:'run out of'},
+ {t:'pick up',type:'word',pos:'phrasal v',em:'📦',m:'to collect someone or something; to learn a skill by chance',ua:'забрати; навчитися мимохідь',e:'I will pick you up at seven. I picked up some Spanish in Madrid.',re:'pick up'},
+ {t:'turn down',type:'word',pos:'phrasal v',em:'🙅',m:'to refuse an offer or make a sound quieter',ua:'відмовити; зменшити (звук)',e:'She turned down the job offer. Please turn the music down.',re:'turn down'},
+ {t:'put up with',type:'word',pos:'phrasal v',em:'😤',m:'to accept something unpleasant without complaining',ua:'терпіти',e:'I can\'t put up with this noise any longer.',re:'put up with'},
+ {t:'get on with',type:'word',pos:'phrasal v',em:'🤝',m:'to have a friendly relationship with someone',ua:'ладнати з кимось',e:'Do you get on with your new boss?',re:'get on with'},
+ {t:'bring up',type:'word',pos:'phrasal v',em:'👨‍👩‍👧',m:'to raise a child; to mention a subject',ua:'виховувати; підняти тему',e:'They brought up three children in a small town.',re:'bring up'},
+ {t:'take off',type:'word',pos:'phrasal v',em:'✈️',m:'to leave the ground (a plane); to remove clothes',ua:'злетіти; зняти (одяг)',e:'Our plane takes off at nine. Take off your shoes, please.',re:'take off'}];
+const PHV3_A={id:'A',type:'sec',l:'A',h:{en:'Separable or not? Where does the object go?',ua:'Роздільні чи ні? Куди ставити об\'єкт?'},nocx:true,
+ pts:[{k:'when',en:"Some phrasal verbs are <b>separable</b>: the object can go in the middle: <b>turn the music down</b> or <b>turn down the music</b>. A <b>pronoun</b> (it, them) must go in the middle: <b>turn it down</b>, not <b>turn down it</b>. Others are <b>inseparable</b>: the object goes after the whole verb: <b>look after my cat</b>, not <b>look my cat after</b>.",ua:"Деякі phrasal verbs <b>роздільні</b>: об'єкт може стояти посередині: <b>turn the music down</b> або <b>turn down the music</b>. <b>Займенник</b> (it, them) завжди посередині: <b>turn it down</b>, не <b>turn down it</b>. Інші <b>нероздільні</b>: об'єкт іде після всього дієслова: <b>look after my cat</b>, не <b>look my cat after</b>."},
+  {k:'wr',wrong:'I turned down it.',right:'I turned it down.',why:{en:'A pronoun always goes between the verb and the particle.',ua:'Займенник завжди між дієсловом і часткою.'}},
+  {k:'wr',wrong:'She looks my cat after.',right:'She looks after my cat.',why:{en:'<b>look after</b> is inseparable: the object goes after <b>after</b>.',ua:'<b>look after</b> нероздільне: об\'єкт іде після <b>after</b>.'}}],
+ parts:[{t:'table',nocx:true,head:{en:['Type','Example'],ua:['Тип','Приклад']},rows:[
+   ['separable','pick up the kids / pick them up'],['inseparable','look after the kids / look after them'],['three words','run out of milk / put up with noise']]}]};
+const PHV3_B={id:'B',type:'sec',l:'B',h:{en:'Three-word phrasal verbs',ua:'Трислівні phrasal verbs'},nocx:true,
+ pts:[{k:'when',en:"Three-word phrasal verbs (<b>run out of, put up with, get on with</b>) are always <b>inseparable</b>. The object goes at the end: <b>We have run out of time.</b> <b>I can't put up with the noise.</b> Not: <b>I can't put the noise up with</b>.",ua:"Трислівні phrasal verbs (<b>run out of, put up with, get on with</b>) завжди <b>нероздільні</b>. Об'єкт іде в кінці: <b>We have run out of time.</b> <b>I can't put up with the noise.</b> Не: <b>I can't put the noise up with</b>."},
+  {k:'wr',wrong:'We have run time out of.',right:'We have run out of time.',why:{en:'<b>run out of</b> + object at the end.',ua:'<b>run out of</b> + об\'єкт в кінці.'}},
+  {k:'wr',wrong:'I can\'t put up the noise with.',right:'I can\'t put up with the noise.',why:{en:'<b>put up with</b> is one unit: <b>with</b> stays next to the verb.',ua:'<b>put up with</b> — одна одиниця: <b>with</b> стоїть біля дієслова.'}}],
+ parts:[]};
+const PHV3_C={id:'C',type:'sec',l:'C',h:{en:'Meaning clues: take off, pick up, bring up',ua:'Підказки значення: take off, pick up, bring up'},nocx:true,
+ pts:[{k:'when',en:"Many phrasal verbs have more than one meaning. Use the context: <b>The plane takes off</b> (leaves the ground) and <b>take off your coat</b> (remove). <b>pick up</b> = collect (<b>I'll pick you up</b>) or learn by chance (<b>I picked up some words</b>). <b>bring up</b> = raise a child (<b>They brought up two sons</b>) or mention a subject (<b>She brought up the price</b>).",ua:"Багато phrasal verbs мають кілька значень. Дивись на контекст: <b>The plane takes off</b> (злітає) і <b>take off your coat</b> (зняти). <b>pick up</b> = забрати (<b>I'll pick you up</b>) або навчитися мимохідь (<b>I picked up some words</b>). <b>bring up</b> = виховувати (<b>They brought up two sons</b>) або підняти тему (<b>She brought up the price</b>)."},
+  {k:'wr',wrong:'The plane took off my coat.',right:'I took off my coat.',why:{en:'<b>take off</b> = remove a piece of clothing; the plane is the subject of the first meaning.',ua:'<b>take off</b> = зняти одяг; у значенні «злетіти» підмет — літак.'}},
+  {k:'wr',wrong:'I will pick up the bus.',right:'I will catch the bus.',why:{en:'<b>pick up</b> = collect a person; for a bus we say <b>catch</b>.',ua:'<b>pick up</b> = забрати людину; для автобуса кажуть <b>catch</b>.'}}],
+ parts:[]};
+const PHV3_D={id:'D',type:'sec',l:'D',h:{en:'Turn down, put off, take on: the right particle',ua:'Turn down, put off, take on: правильна частка'},nocx:true,
+ pts:[{k:'when',en:"Look at the <b>particle</b> to choose the verb: <b>turn down</b> = refuse (<b>I turned down the job</b>). <b>turn up</b> = arrive or make louder (<b>He turned up late</b>). <b>take on</b> = accept a challenge (<b>She took on a new project</b>). <b>take off</b> = leave the ground or remove clothes.",ua:"Дивись на <b>частку</b>, щоб обрати дієслово: <b>turn down</b> = відмовити (<b>I turned down the job</b>). <b>turn up</b> = прийти або зробити голосніше (<b>He turned up late</b>). <b>take on</b> = взятися за виклик (<b>She took on a new project</b>). <b>take off</b> = злетіти або зняти одяг."},
+  {k:'wr',wrong:'I turned up the job offer.',right:'I turned down the job offer.',why:{en:'<b>turn up</b> = arrive; <b>turn down</b> = refuse.',ua:'<b>turn up</b> = прийти; <b>turn down</b> = відмовити.'}},
+  {k:'wr',wrong:'She took up a new project.',right:'She took on a new project.',why:{en:'<b>take on</b> = accept a challenge; <b>take up</b> = start a hobby.',ua:'<b>take on</b> = взятися за виклик; <b>take up</b> = почати хобі.'}}],
+ parts:[]};
+const PHV3_RECAP={id:'r1',type:'mcqset',sec:'rev',rev:'phrasal verbs 2',_label:'Quick recap',n:3,nocx:true,ins:{en:'Quick recap: phrasal verbs from the last lesson.',ua:'Швидке повторення: phrasal verbs з минулого уроку.'},why:{en:'check in · set off · get back · call off · set up · carry on · hang out · work out',ua:'check in · set off · get back · call off · set up · carry on · hang out · work out'},bank:PHV2_BLITZ.filter(x=>x.q.includes('___')).map(x=>({q:x.q,o:x.o,ua:''}))};
+const PHV3_V=vgap('v1','W',[
+ {s:'My grandmother [looks after] the cat when we travel.',ua:'Бабуся доглядає кота, коли ми їдемо.',d:['looks for']},
+ {s:'We have [run out of] milk. Can you buy some?',ua:'У нас закінчилося молоко. Купиш?',d:['run up']},
+ {s:'I will [pick you up] at seven.',ua:'Я заберу тебе о сьомій.',d:['pick out']},
+ {s:'She [turned down] the job offer.',ua:'Вона відмовилась від пропозиції роботи.',d:['turned up']},
+ {s:'I can\'t [put up with] this noise.',ua:'Я не можу терпіти цей шум.',d:['put off']},
+ {s:'Do you [get on with] your new boss?',ua:'Ти ладнаєш зі своїм новим босом?',d:['get over']},
+ {s:'They [brought up] three children.',ua:'Вони виховали трьох дітей.',d:['brought in']},
+ {s:'Our plane [takes off] at nine.',ua:'Наш літак злітає о дев\'ятій.',d:['takes in']}]);
+const PHV3_E1={id:'e1',type:'mcq',sec:'A',nocx:true,ins:{en:'Choose the correct form.',ua:'Обери правильну форму.'},why:{en:'Pronoun between verb and particle',ua:'Займенник між дієсловом і часткою'},bank:[
+ {q:'The music is too loud. Can you turn ___ down?',o:['it','down it','it down'],ua:'Музика занадто голосна. Зменшиш її?'},
+ {q:'I ___ my little brother.',o:['look after','look my brother after','after look'],ua:'Я доглядаю свого молодшого брата.'},
+ {q:'She ___ the phone and answered.',o:['picked up','picked','up picked'],ua:'Вона взяла телефон і відповіла.'},
+ {q:'We ___ the bread, so we bought some.',o:['ran out of','ran','run out'],ua:'У нас закінчився хліб, тож ми купили.'},
+ {q:'I ___ the offer. It was too low.',o:['turned down','turned up','took on'],ua:'Я відмовився від пропозиції. Вона була надто низькою.'},
+ {q:'Our plane ___ at ten.',o:['takes off','takes up','takes on'],ua:'Наш літак злітає о десятій.'}]};
+const PHV3_E2={id:'e2',type:'gap',sec:'A',nocx:true,n:3,ins:{en:'Write the missing word.',ua:'Напиши пропущене слово.'},why:{en:'Choose the particle that matches the meaning',ua:'Обери частку, що відповідає значенню'},bank:[
+ {s:'Please turn the TV [down].',ua:'Будь ласка, зменш телевізор.',d:['up','off']},
+ {s:'She is [looking] after her sick sister.',ua:'Вона доглядає за хворою сестрою.',d:['looking for','looking up']},
+ {s:'We need to [pick] up the kids at school.',ua:'Треба забрати дітей зі школи.',d:['pull','pick out']},
+ {s:'I can\'t [put] up with this cold weather.',ua:'Я не можу терпіти цю холодну погоду.',d:['get','go']},
+ {s:'He [took] on a difficult job.',ua:'Він узявся за важку роботу.',d:['took up','took off']},
+ {s:'Our flight [took] off late.',ua:'Наш рейс злетів із запізненням.',d:['took on','took in']}]};
+const PHV3_E3={id:'e3',type:'mcq',sec:'B',nocx:true,ins:{en:'Choose the correct three-word form.',ua:'Обери правильну трислівну форму.'},why:{en:'Three-word phrasal verbs are inseparable',ua:'Трислівні phrasal verbs нероздільні'},bank:[
+ {q:'We have ___ time. Let\'s hurry!',o:['run out of','run out','run of'],ua:'У нас закінчився час. Поспішаймо!'},
+ {q:'I can\'t ___ the noise any longer.',o:['put up with','put up','put with'],ua:'Я більше не можу терпіти цей шум.'},
+ {q:'She ___ her colleagues very well.',o:['gets on with','gets on','gets with'],ua:'Вона дуже добре ладнає з колегами.'},
+ {q:'They ___ the problem with their landlord.',o:['talked over','talked on with','talk with'],ua:'Вони обговорили проблему з орендодавцем.'},
+ {q:'I ___ the boy well. He is very kind.',o:['look up to','look on','look for'],ua:'Я дуже поважаю цього хлопця. Він дуже добрий.'},
+ {q:'We ___ our car after the trip.',o:['looked after','looked for','looked up'],ua:'Після поїздки ми доглядали за машиною.'}]};
+const PHV3_E4={id:'e4',type:'gap',sec:'B',nocx:true,n:3,ins:{en:'Write the missing word.',ua:'Напиши пропущене слово.'},why:{en:'Three-word phrasal verbs: the object stays at the end',ua:'Трислівні phrasal verbs: об\'єкт лишається в кінці'},bank:[
+ {s:'We have [run] out of time.',ua:'У нас закінчився час.',d:['ran','running']},
+ {s:'I can\'t [put] up with the noise.',ua:'Я не можу терпіти шум.',d:['get','set']},
+ {s:'She [gets] on with her boss.',ua:'Вона ладнає з босом.',d:['got','getting']},
+ {s:'He [brought] up his children in Lviv.',ua:'Він виховав дітей у Львові.',d:['bring','bringing']},
+ {s:'Do you [get] on with your sister?',ua:'Ти ладнаєш зі своєю сестрою?',d:['got','gets']},
+ {s:'They [took] on a new challenge.',ua:'Вони взялися за новий виклик.',d:['take','taking']}]};
+const PHV3_E5={id:'e5',type:'mcq',sec:'C',nocx:true,ins:{en:'Which meaning fits the context?',ua:'Яке значення підходить до контексту?'},why:{en:'Use the context to pick the meaning',ua:'Обери значення за контекстом'},bank:[
+ {q:'I picked up some Spanish while I lived in Madrid.',o:['learned by chance','collected','lifted'],ua:'Я вивчив трохи іспанської, коли жив у Мадриді.'},
+ {q:'The plane took off ten minutes late.',o:['left the ground','removed','accepted'],ua:'Літак злетів на десять хвилин пізніше.'},
+ {q:'They brought up the issue at the meeting.',o:['mentioned','raised a child','removed'],ua:'Вони підняли це питання на зустрічі.'},
+ {q:'Please take off your muddy shoes.',o:['remove','leave the ground','accept'],ua:'Будь ласка, зніми брудне взуття.'},
+ {q:'She turned up at the party with her friends.',o:['arrived','refused','became louder'],ua:'Вона прийшла на вечірку з друзями.'},
+ {q:'He took on the job of manager.',o:['accepted the challenge','removed','raised'],ua:'Він погодився на роботу менеджера.'}]};
+const PHV3_E6={id:'e6',type:'mcq',sec:'D',nocx:true,ins:{en:'Choose the correct phrasal verb.',ua:'Обери правильний phrasal verb.'},why:{en:'Pick the particle by its meaning',ua:'Обери частку за значенням'},bank:[
+ {q:'I ___ the invitation. I have too much work.',o:['turned down','turned up','took off'],ua:'Я відмовився від запрошення. У мене забагато роботи.'},
+ {q:'Could you ___ the kids from school today?',o:['pick up','pick out','pick on'],ua:'Ти можеш забрати дітей зі школи сьогодні?'},
+ {q:'He always ___ his grandparents on Sundays.',o:['looks after','looks for','looks into'],ua:'Він щонеділі доглядає за дідусем і бабусею.'},
+ {q:'We ___ of coffee, so we went to the shop.',o:['ran out','ran up','ran into'],ua:'У нас закінчилась кава, тож ми пішли в магазин.'},
+ {q:'Can you ___ the volume? It is too loud.',o:['turn down','turn up','take off'],ua:'Зменш гучність, будь ласка. Вона надто гучна.'},
+ {q:'They ___ two daughters in a village.',o:['brought up','brought down','took up'],ua:'Вони виховали двох дочок у селі.'}]};
+const PHV3_E7={id:'e7',type:'order',sec:'A',nocx:true,ins:{en:'Put the words in order.',ua:'Розстав слова в правильному порядку.'},why:{en:'Pronoun between the verb and the particle',ua:'Займенник між дієсловом і часткою'},bank:[
+ {w:'I will pick you up at seven',p:'.',ua:'Я заберу тебе о сьомій.',d:['I will you pick up at seven','I will up pick you at seven']},
+ {w:'she turned it down',p:'.',ua:'Вона відмовилась від цього.',d:['she turned down it','she down turned it']},
+ {w:'we have run out of milk',p:'.',ua:'У нас закінчилося молоко.',d:['we have milk run out of','we have out run of milk']},
+ {w:'can you look after my cat',p:'?',ua:'Ти доглянеш мого кота?',d:['can you look my cat after','can you after look my cat']},
+ {w:'I cannot put up with this noise',p:'.',ua:'Я не можу терпіти цей шум.',d:['I cannot put this noise up with','I cannot up put with this noise']},
+ {w:'turn the music down please',p:'.',ua:'Будь ласка, зменш музику.',d:['turn down the music please','turn it down please music']}]};
+const PHV3_E8={id:'e8',type:'which',sec:'D',nocx:true,ins:{en:'Which sentence is correct?',ua:'Яке речення правильне?'},hardIns:{en:'This sentence has a mistake. Write it correctly.',ua:'У цьому реченні помилка. Напиши його правильно.'},bank:[
+ {o:[['I looked after my little sister.'],['I looked my little sister after.','my little sister after','look after: the object comes after after'],['I after looked my little sister.','after looked','the particle goes after the verb']],ua:'Я доглядала свою молодшу сестру.'},
+ {o:[['Please turn it down.'],['Please turn down it.','down it','the pronoun goes in the middle'],['Please turned it down down.','down down','only one particle']],ua:'Будь ласка, зменш.'},
+ {o:[['We ran out of time.'],['We ran time out of.','time out of','the object goes at the end'],['We ran out time.','out time','run out of needs of']],ua:'У нас закінчився час.'},
+ {o:[['She gets on with her colleagues.'],['She gets with on her colleagues.','with on','get on with is one unit'],['She get on with her colleagues.','get on','she → gets']],ua:'Вона ладнає з колегами.'}]};
+const PHV3_E9={id:'e9',type:'error',sec:'D',nocx:true,ins:{en:'Find the mistake and fix it.',ua:'Знайди помилку й виправ її.'},bank:[
+ {w:'I [turned down it].',fix:['turned it down'],o:['turned it down','turned it up','took it on'],full:'I turned it down.',ua:'Я відмовився від цього.',why:{en:'pronoun in the middle',ua:'займенник посередині'}},
+ {w:'She [looks my cat after] every day.',fix:['looks after my cat'],o:['looks after my cat','looks for my cat','looks my cat up'],full:'She looks after my cat every day.',ua:'Вона доглядає мого кота щодня.',why:{en:'inseparable: after the object',ua:'нероздільне: об\'єкт після'}},
+ {w:'We have [run time out of].',fix:['run out of time'],o:['run out of time','run time out of','ran out time'],full:'We have run out of time.',ua:'У нас закінчився час.',why:{en:'the object comes last',ua:'об\'єкт іде останнім'}},
+ {w:'I can\'t [put the noise up with].',fix:['put up with the noise'],o:['put up with the noise','put the noise up','put up the noise'],full:'I can\'t put up with the noise.',ua:'Я не можу терпіти шум.',why:{en:'put up with is one unit',ua:'put up with — одна одиниця'}},
+ {w:'The plane [took on] at nine.',fix:['took off'],o:['took off','took on','took up'],full:'The plane took off at nine.',ua:'Літак злетів о дев\'ятій.',why:{en:'take off = leave the ground',ua:'take off = злетіти'}}]};
+const PHV3_K={id:'K',type:'sec',l:'K',h:{en:'Typical mistakes',ua:'Типові помилки'},nocx:true,pts:[{k:'when',en:'Read the wrong sentence and say it correctly. Then reveal the answer.',ua:'Прочитай неправильне речення й скажи його правильно. Потім відкрий відповідь.'}],
+ parts:[{t:'mist',n:5,bank:[
+  ['I turned down it.','I turned it down.'],['She looks my cat after.','She looks after my cat.'],['We have run out time.','We have run out of time.'],
+  ['I can\'t put the noise up with.','I can\'t put up with the noise.'],['I took up the job offer.','I took on the job offer.']]}]};
+const PHV3_BLITZ=[
+ ['Can you turn the TV ___ ?','down','up','off'],['She ___ her little brother.','looks after','looks for','looks at'],['We have ___ milk.','run out of','run out','ran out'],['I will ___ you at seven.','pick up','pick out','pick on'],
+ ['I can\'t ___ this noise.','put up with','put up','put with'],['He ___ his new boss well.','gets on with','gets on','gets with'],['They ___ three children.','brought up','brought down','took up'],['The plane ___ at nine.','takes off','takes on','takes up'],
+ ['I ___ the job offer.','turned down','turned up','took on'],['She ___ a new project.','took on','took up','took off'],['🧴 have no more left','run out of','run into','run over'],['🤝 be friendly with','get on with','get over','get up'],
+ ['📦 collect someone','pick up','pick on','pick out'],['😤 accept something bad','put up with','put off','put on'],['✈️ leave the ground','take off','take on','take up'],['👶 care for someone','look after','look for','look up']].map(([q,...o])=>({q,o}));
+const PHV3_GAME={id:'g1',type:'game',kind:'blitz',em:'🧩',title:{en:'Phrasal verbs 3: 60 seconds',ua:'Phrasal verbs 3: 60 секунд'},rules:{en:'Pick the right phrasal verb. Keys 1 · 2 · 3 work too.',ua:'Обирай правильний phrasal verb. Можна клавішами 1 · 2 · 3.'},items:PHV3_BLITZ};
+const PHV3_CHAT={id:'J',type:'sec',l:'💬',h:{en:'Model conversations: a busy family and a new job',ua:'Зразки розмов: зайнята родина і нова робота'},nocx:true,
+ pts:[{k:'when',en:"First read them together. Find the <b>pronoun in the middle</b> (turn it down), <b>three-word verbs</b> (run out of, put up with, get on with), and the meanings of <b>pick up</b> and <b>take off</b>. Then switch to <b>Role-play</b> and tell about your family or your job.",ua:"Спершу прочитайте разом. Знайдіть <b>займенник посередині</b> (turn it down), <b>трислівні дієслова</b> (run out of, put up with, get on with) і значення <b>pick up</b> та <b>take off</b>. Потім перейдіть до <b>Role-play</b> і розкажіть про родину або роботу."}],
+ parts:[{t:'chat',people:{A:{name:'Anna',em:'👩'},B:{name:'Max',em:'🧑'}},lines:[
+  ['A',"Can you pick up the kids from school today?",'',"Ти можеш забрати дітей зі школи сьогодні?","pick up"],
+  ['B',"Sure. Can you turn the TV down first? It is too loud.",'',"Звісно. Спершу зменш телевізор? Він занадто гучний.","turn down"],
+  ['A',"Done! And we have run out of milk, so please buy some.",'',"Готово! І в нас закінчилося молоко, тож купи, будь ласка.","run out of"],
+  ['B',"Okay. I can't put up with an empty fridge!",'',"Добре. Я не можу терпіти порожній холодильник!","put up with"]]},
+  {t:'chat',people:{A:{name:'Nina',em:'👧'},B:{name:'Tom',em:'🧑'}},lines:[
+  ['A',"How do you get on with your new boss?",'',"Як ти ладнаєш з новим босом?","get on with"],
+  ['B',"Really well. He took me on last month, and he looks after his team.",'',"Дуже добре. Він взяв мене на роботу минулого місяця і піклується про свою команду.","took on · looks after"],
+  ['A',"Did you turn down his first offer?",'',"Ти відмовився від його першої пропозиції?","turn down"],
+  ['B',"No, I accepted. The plane to our conference takes off at nine tomorrow!",'',"Ні, я погодився. Наш літак на конференцію злітає о дев'ятій завтра!","takes off"]]}]};
+const PHV3_S={id:'S',type:'speak',title:{en:'Phrasal verbs in my life',ua:'Phrasal verbs у моєму житті'},prevVocab:true,
+ grammar:["separable: turn it down (pronoun in the middle)","inseparable: look after my cat","three-word verbs: run out of, put up with, get on with","meaning clues: pick up, take off, bring up"],earlier:["Phrasal verbs 1 and 2: check in, set off, carry on, hang out"],
+ prompts:{
+  general:{em:'🌍',q:"Tell about your family: Who do you look after? Who did you bring up? Do you get on with your neighbours? What do you put up with every day?"},
+  life:{em:'🌱',q:"Your home: What have you run out of this week? What do you turn down or up at home? What do you pick up on the way home? What do you need to take off when you come in?"},
+  games:{em:'🎮',q:"Games: Who do you play with and how do you get on with them? What have you run out of in the game? Which level do you give up on? What do you pick up in the shop?"},
+  series:{em:'🎬',q:"A series: Who looks after the main hero? What did he turn down? Who does he get on with? What does the family put up with?"},
+  travel:{em:'✈️',q:"A trip: When does your plane take off? Who will you pick up at the airport? What have you run out of on a long trip? What did you pick up in a new country?"},
+  it:{em:'💻',q:"Technology: What do you turn off before bed? Which app do you pick up every morning? What do you put up with in your phone? What did you run out of, storage or battery?"},
+  music:{em:'🎸',q:"Music: Who brought you up musically? What did you pick up when you were young? What do you put up with at concerts? Which song do you turn up loud?"},
+  sport:{em:'🏅',q:"Sport: Who looks after your gear? Which training do you put off? Who do you get on with in the team? What do you take off after a match?"}}};
+BE_LESSONS['b1-phv3']={unit:'B1.1 · Block 10 · Prepositions & words',
+ lead:{en:'Look after, run out of, pick up, turn down, put up with, get on with, bring up, take off. Where the object goes and which particle means what.',ua:'Look after, run out of, pick up, turn down, put up with, get on with, bring up, take off. Куди ставити об\'єкт і яка частка що означає.'},minutes:'≈ 60 min · 7 steps',
+ homework:'Do the homework file. Then write 12 sentences: 3 with a pronoun in the middle (turn it down), 3 with inseparable verbs (look after), 3 with three-word verbs and 3 about your family or job.',
+ vocab:PHV3_VOCAB,
+ goals:{en:['<b>separable</b>: turn it down (pronoun in the middle)','<b>inseparable</b>: look after my cat','<b>three-word verbs</b>: run out of, put up with, get on with','<b>meaning</b>: pick up, take off, bring up'],ua:['<b>роздільні</b>: turn it down (займенник посередині)','<b>нероздільні</b>: look after my cat','<b>трислівні</b>: run out of, put up with, get on with','<b>значення</b>: pick up, take off, bring up']},
+ blocks:[{...stage(0,'warm',1),sub:{en:'Words from the last lesson and a quick recap',ua:'Слова з минулого уроку і швидке повторення'}},{id:'W0',type:'warm',from:'b1-phv2'},PHV3_RECAP,
+  {...stage(0,'words',2),sub:{en:'8 phrasal verbs for family, work and daily life',ua:'8 phrasal verbs для родини, роботи й повсякдення'}},wordsSec('W','b1-phv3',{en:'Eight phrasal verbs for family, work and daily life. Learn them first: the grammar examples use them.',ua:'Вісім phrasal verbs для родини, роботи й повсякдення. Вивчи їх спершу: приклади граматики з ними.'}),{...POOL.e15,id:'e15',sec:'W',easyUA:true},PHV3_V,
+  {...stage(0,'gram',3),min:'15 min',sub:{en:'Separable, inseparable, three-word verbs, meaning clues',ua:'Роздільні, нероздільні, трислівні, підказки значення'}},PHV3_A,PHV3_B,PHV3_C,PHV3_D,
+  {...stage(0,'prac',4),min:'20 min',sub:{en:'Choose, complete, correct',ua:'Вибір, доповнення, виправлення'}},PHV3_E1,PHV3_E2,PHV3_E3,PHV3_E4,PHV3_E5,PHV3_E6,PHV3_E7,PHV3_E8,PHV3_E9,PHV3_K,
+  stage(0,'game',5),PHV3_GAME,
+  stage(0,'speak',6),PHV3_CHAT,PHV3_S]};
+/* ================= B1.1 · BLOCK 10 · WORD FORMATION (NEW) ================= */
+const WF_RECAP={id:'r1',type:'mcqset',sec:'rev',rev:'phrasal verbs 3',_label:'Quick recap',n:3,nocx:true,ins:{en:'Quick recap: phrasal verbs from the last lesson.',ua:'Швидке повторення: phrasal verbs з минулого уроку.'},why:{en:'look after · run out of · put up with · turn down · take off',ua:'look after · run out of · put up with · turn down · take off'},bank:PHV3_BLITZ.filter(x=>x.q.includes('___')).map(x=>({q:x.q,o:x.o,ua:''}))};
+const WF_VOCAB=[
+ {t:'decision',type:'word',pos:'noun',em:'🧠',m:'a choice you make',ua:'рішення',e:'She made a quick decision.',re:'decision'},
+ {t:'enjoyable',type:'word',pos:'adj',em:'😄',m:'nice to do or to have',ua:'приємний, цікавий',e:'The trip was very enjoyable.',re:'enjoyable'},
+ {t:'unhappy',type:'word',pos:'adj',em:'😔',m:'not happy',ua:'нещасливий',e:'He felt unhappy at work.',re:'unhappy'},
+ {t:'successful',type:'word',pos:'adj',em:'🏆',m:'having success',ua:'успішний',e:'She is a successful designer.',re:'successful'},
+ {t:'kindness',type:'word',pos:'noun',em:'🤗',m:'the quality of being kind',ua:'доброта',e:'Thank you for your kindness.',re:'kindness'},
+ {t:'reasonable',type:'word',pos:'adj',em:'⚖️',m:'fair and sensible',ua:'розумний, прийнятний',e:'That is a reasonable price.',re:'reasonable'},
+ {t:'carefully',type:'word',pos:'adv',em:'🔍',m:'with care, paying attention',ua:'уважно, акуратно',e:'Read the instructions carefully.',re:'carefully'},
+ {t:'impossible',type:'word',pos:'adj',em:'🚫',m:'cannot be done',ua:'неможливий',e:'It is impossible to finish today.',re:'impossible'}];
+const WF_A={id:'A',type:'sec',l:'A',h:{en:'Noun endings: -tion, -ment, -ness, -er',ua:'Закінчення іменників: -tion, -ment, -ness, -er'},nocx:true,
+ pts:[{k:'when',en:"Many nouns come from verbs or adjectives. <b>decide → decision</b> (-sion after -de), <b>educate → education</b> (-tion), <b>enjoy → enjoyment</b> (-ment), <b>kind → kindness</b> (-ness), <b>teach → teacher</b> (-er = a person). Learn the ending together with the base word, not separately.",ua:"Багато іменників походять від дієслів або прикметників. <b>decide → decision</b> (-sion після -de), <b>educate → education</b> (-tion), <b>enjoy → enjoyment</b> (-ment), <b>kind → kindness</b> (-ness), <b>teach → teacher</b> (-er = людина). Вчи закінчення разом з базовим словом."},
+  {k:'wr',wrong:'I like your kindnes.',right:'I like your kindness.',why:{en:'the ending is -ness, with double s',ua:'закінчення -ness, з двома s'}},
+  {k:'wr',wrong:'The decisation was hard.',right:'The decision was hard.',why:{en:'decide → decision (not -ation)',ua:'decide → decision (не -ation)'}}],
+ parts:[{t:'table',nocx:true,head:{en:['Ending','Example'],ua:['Закінчення','Приклад']},rows:[
+   ['-tion / -sion','decide → decision, act → action'],['-ment','develop → development'],['-ness','happy → happiness'],['-er (a person)','teach → teacher']]}]};
+const WF_B={id:'B',type:'sec',l:'B',h:{en:'Adjective endings: -ful, -less, -able, -ous',ua:'Закінчення прикметників: -ful, -less, -able, -ous'},nocx:true,
+ pts:[{k:'when',en:"<b>care → careful</b> (full of care) and <b>careless</b> (without care). <b>enjoy → enjoyable</b> (can be enjoyed). <b>danger → dangerous</b>. <b>success → successful</b>. A noun before an adjective: <b>a successful businessman</b>, <b>an enjoyable trip</b> (vowel sound: <b>an</b>).",ua:"<b>care → careful</b> (повний турботи) і <b>careless</b> (без турботи). <b>enjoy → enjoyable</b> (те, що можна насолоджуватися). <b>danger → dangerous</b>. <b>success → successful</b>. Перед іменником: <b>a successful businessman</b>, <b>an enjoyable trip</b> (голосний звук: <b>an</b>)."},
+  {k:'wr',wrong:'She is a success designer.',right:'She is a successful designer.',why:{en:'the adjective needs -ful',ua:'прикметник потребує -ful'}},
+  {k:'wr',wrong:'It was a enjoyable trip.',right:'It was an enjoyable trip.',why:{en:'before a vowel sound we say an',ua:'перед голосним звуком кажемо an'}}],
+ parts:[]};
+const WF_C={id:'C',type:'sec',l:'C',h:{en:'Adverbs: -ly, and words that are adjectives',ua:'Прислівники: -ly і слова, які є прикметниками'},nocx:true,
+ pts:[{k:'when',en:"Most adverbs add <b>-ly</b>: <b>careful → carefully</b>, <b>clear → clearly</b>. Be careful: <b>friendly, lovely, lonely, early</b> are <b>adjectives</b>. For an adverb use a phrase: <b>in a friendly way</b>. Some adverbs do not end in -ly: <b>well, fast, hard</b>.",ua:"Більшість прислівників мають <b>-ly</b>: <b>careful → carefully</b>, <b>clear → clearly</b>. Увага: <b>friendly, lovely, lonely, early</b> — це <b>прикметники</b>. Для прислівника використай фразу: <b>in a friendly way</b>. Деякі прислівники без -ly: <b>well, fast, hard</b>."},
+  {k:'wr',wrong:'He speaks careful.',right:'He speaks carefully.',why:{en:'an adverb describes the verb speaks',ua:'прислівник описує дієслово speaks'}},
+  {k:'wr',wrong:'He speaks friendly to us.',right:'He speaks to us in a friendly way.',why:{en:'friendly is an adjective; use in a friendly way',ua:'friendly — прикметник; кажемо in a friendly way'}}],
+ parts:[]};
+const WF_D={id:'D',type:'sec',l:'D',h:{en:'Prefixes: un-, im-, dis-, re-, mis-',ua:'Префікси: un-, im-, dis-, re-, mis-'},nocx:true,
+ pts:[{k:'when',en:"Prefixes change the meaning to the opposite or add a new idea: <b>happy → unhappy</b>, <b>possible → impossible</b> (im- before p, b, m), <b>agree → disagree</b>, <b>write → rewrite</b> (again), <b>understand → misunderstand</b> (wrongly). Only some words take a prefix: there is no <b>unpossible</b>.",ua:"Префікси змінюють значення на протилежне або додають нову ідею: <b>happy → unhappy</b>, <b>possible → impossible</b> (im- перед p, b, m), <b>agree → disagree</b>, <b>write → rewrite</b> (знову), <b>understand → misunderstand</b> (неправильно). Не всі слова мають префікс: <b>unpossible</b> немає."},
+  {k:'wr',wrong:'It is unpossible to do it.',right:'It is impossible to do it.',why:{en:'possible takes im-, not un-',ua:'possible приймає im-, а не un-'}},
+  {k:'wr',wrong:'I misagree with you.',right:'I disagree with you.',why:{en:'agree takes dis-',ua:'agree приймає dis-'}}],
+ parts:[]};
+const WF_V=vgap('v1','W',[
+ {s:'She made a quick [decision].',ua:'Вона швидко ухвалила рішення.',d:['decide']},
+ {s:'The film was very [enjoyable].',ua:'Фільм був дуже цікавий.',d:['enjoy']},
+ {s:'He felt [unhappy] after the match.',ua:'Після матчу він почувався нещасливим.',d:['unhappiness']},
+ {s:'She is a [successful] businessman.',ua:'Вона успішна бізнесвумен.',d:['success']},
+ {s:'Thank you for your [kindness].',ua:'Дякую за твою доброту.',d:['kindly']},
+ {s:'That is a [reasonable] price.',ua:'Це розумна ціна.',d:['reason']},
+ {s:'Read the text [carefully].',ua:'Прочитай текст уважно.',d:['careful']},
+ {s:'It is [impossible] to finish today.',ua:'Сьогодні це неможливо закінчити.',d:['possibility']}]);
+const WF_E1={id:'e1',type:'mcq',sec:'A',nocx:true,ins:{en:'Choose the correct noun.',ua:'Обери правильний іменник.'},why:{en:'Nouns end in -tion, -ment, -ness, -er',ua:'Іменники мають закінчення -tion, -ment, -ness, -er'},bank:[
+ {q:'She made a quick ___.',o:['decision','decide','decisive'],ua:'Вона швидко ухвалила рішення.'},
+ {q:'Thank you for your ___.',o:['kindness','kindly','kind'],ua:'Дякую за твою доброту.'},
+ {q:'The ___ of the new road took two years.',o:['construction','construct','constructive'],ua:'Будівництво нової дороги тривало два роки.'},
+ {q:'He is a good ___. His students love him.',o:['teacher','teaching','teach'],ua:'Він хороший учитель. Його люблять учні.'},
+ {q:'The ___ of the park is finished.',o:['development','developed','develop'],ua:'Розвиток парку завершено.'},
+ {q:'We need a clear ___ about the trip.',o:['plan','planner','planned'],ua:'Нам потрібен чіткий план поїздки.'}]};
+const WF_E2={id:'e2',type:'gap',sec:'A',nocx:true,n:3,ins:{en:'Write the word in the right form. The base word is in brackets.',ua:'Напиши слово у правильній формі. Базове слово в дужках.'},why:{en:'Choose the form that fits the grammar',ua:'Обери форму, що підходить за граматикою'},bank:[
+ {s:'The film was very [enjoyable] (enjoy).',ua:'Фільм був дуже цікавий.',d:['enjoyed','enjoying']},
+ {s:'He is a [successful] (succeed) businessman.',ua:'Він успішний бізнесмен.',d:['succeeded','success']},
+ {s:'Read the text [carefully] (care).',ua:'Прочитай текст уважно.',d:['careful','carelessly']},
+ {s:'It is [impossible] (possible) to finish today.',ua:'Сьогодні це неможливо закінчити.',d:['possibility','possibly']},
+ {s:'She showed great [kindness] (kind).',ua:'Вона виявила велику доброту.',d:['kindly','kinder']},
+ {s:'This is a [reasonable] (reason) price.',ua:'Це розумна ціна.',d:['reasons','reasoned']}]};
+const WF_E3={id:'e3',type:'mcq',sec:'B',nocx:true,ins:{en:'Choose the correct adjective.',ua:'Обери правильний прикметник.'},why:{en:'Adjectives end in -ful, -less, -able, -ous, -ible',ua:'Прикметники мають -ful, -less, -able, -ous, -ible'},bank:[
+ {q:'The job was ___. I was never bored.',o:['enjoyable','enjoyment','enjoy'],ua:'Робота була цікавою. Мені ніколи не було нудно.'},
+ {q:'Be ___ when you cross the road.',o:['careful','carefully','care'],ua:'Будь уважним, коли переходиш дорогу.'},
+ {q:'He is ___ at his job. He always wins.',o:['successful','success','successfully'],ua:'Він успішний у роботі. Він завжди перемагає.'},
+ {q:'The water is ___. Do not drink it.',o:['dangerous','danger','dangerously'],ua:'Вода небезпечна. Не пий її.'},
+ {q:'She felt ___ after the bad news.',o:['unhappy','unhappily','unhappiness'],ua:'Вона почувалась нещасною після поганих новин.'}]};
+const WF_E4={id:'e4',type:'gap',sec:'B',nocx:true,n:3,ins:{en:'Write the word in the right form. The base word is in brackets.',ua:'Напиши слово у правильній формі. Базове слово в дужках.'},why:{en:'Use the adjective ending that fits',ua:'Обери закінчення прикметника, яке підходить'},bank:[
+ {s:'She felt [unhappy] (happy) after the match.',ua:'Після матчу вона почувалась нещасною.',d:['unhappily','happiness']},
+ {s:'It was a [dangerous] (danger) road.',ua:'Це була небезпечна дорога.',d:['dangerously','danger']},
+ {s:'He was [careless] (care) with the glass.',ua:'Він був необережним зі склянкою.',d:['carefully','carefulness']},
+ {s:'This is a [useful] (use) tool.',ua:'Це корисний інструмент.',d:['useless','usefully']},
+ {s:'Her [teacher] (teach) was very kind.',ua:'Її вчителька була дуже доброю.',d:['teaching','taught']},
+ {s:'The [ability] (able) to speak is important.',ua:'Здатність говорити важлива.',d:['abilities','ably']}]};
+const WF_E5={id:'e5',type:'mcq',sec:'C',nocx:true,ins:{en:'Adverb or adjective? Choose the right form.',ua:'Прислівник чи прикметник? Обери правильну форму.'},why:{en:'Adverbs describe verbs; adjectives describe nouns',ua:'Прислівники описують дієслова; прикметники — іменники'},bank:[
+ {q:'She speaks ___ and clearly.',o:['carefully','careful','care'],ua:'Вона говорить уважно й чітко.'},
+ {q:'He is a ___ neighbour. He says hello every day.',o:['friendly','friendlily','friend'],ua:'Він привітний сусід. Він щодня вітається.'},
+ {q:'He drove ___ in the rain.',o:['slowly','slowness','slow'],ua:'Він їхав повільно під дощем.'},
+ {q:'Did you sleep ___ last night?',o:['well','good','goodly'],ua:'Ти добре спала минулої ночі?'},
+ {q:'The lesson was ___. Everyone understood it.',o:['clear','clearly','clearness'],ua:'Урок був зрозумілий. Усі його зрозуміли.'},
+ {q:'She answered the question ___.',o:['correctly','correct','correction'],ua:'Вона правильно відповіла на питання.'}]};
+const WF_E6={id:'e6',type:'mcq',sec:'D',nocx:true,ins:{en:'Choose the correct word with a prefix.',ua:'Обери правильне слово з префіксом.'},why:{en:'un-, im-, dis-, re-, mis-',ua:'un-, im-, dis-, re-, mis-'},bank:[
+ {q:'I ___ with your plan. It is too risky.',o:['disagree','unagree','misagree'],ua:'Я не згоден з твоїм планом. Він надто ризикований.'},
+ {q:'Please ___ this sentence. It is wrong.',o:['rewrite','unwrite','misdo'],ua:'Будь ласка, перепиши це речення. Воно неправильне.'},
+ {q:'I ___ the instructions. Can you explain again?',o:['misunderstood','understood','disunderstood'],ua:'Я неправильно зрозумів інструкцію. Можеш пояснити ще раз?'},
+ {q:'The door is ___. Please lock it.',o:['unlocked','locked','relocked'],ua:'Двері не замкнені. Будь ласка, замкни їх.'},
+ {q:'That is ___. Nobody can do it in one day.',o:['impossible','unpossible','inpossible'],ua:'Це неможливо. Ніхто не зробить це за день.'},
+ {q:'The answer is ___. Try again.',o:['incorrect','uncorrect','disincorrect'],ua:'Відповідь неправильна. Спробуй ще раз.'}]};
+const WF_E7={id:'e7',type:'order',sec:'B',nocx:true,ins:{en:'Put the words in order.',ua:'Розстав слова в правильному порядку.'},why:{en:'Adjective before the noun; adverb after the object',ua:'Прикметник перед іменником; прислівник після додатка'},bank:[
+ {w:'it is impossible to finish today',p:'.',ua:'Сьогодні це неможливо закінчити.',d:['it is to finish impossible today','it is possible impossible to finish today']},
+ {w:'she felt unhappy after the match',p:'.',ua:'Після матчу вона почувалась нещасною.',d:['she felt after the match unhappy','she unhappy felt after the match']},
+ {w:'that was a reasonable decision',p:'.',ua:'Це було розумне рішення.',d:['that was a decision reasonable','that reasonable was a decision']},
+ {w:'thank you for your kindness',p:'!',ua:'Дякую за твою доброту!',d:['thank you for your kindly','thank kindness you for your']},
+ {w:'the film was very enjoyable',p:'.',ua:'Фільм був дуже цікавий.',d:['the film enjoyable was very','the film was enjoyable very']},
+ {w:'read the text carefully',p:'.',ua:'Прочитай текст уважно.',d:['read the text careful','read careful the text']}]};
+const WF_E8={id:'e8',type:'which',sec:'D',nocx:true,ins:{en:'Which sentence is correct?',ua:'Яке речення правильне?'},hardIns:{en:'This sentence has a mistake. Write it correctly.',ua:'У цьому реченні помилка. Напиши його правильно.'},bank:[
+ {o:[['The decision was quick.'],['The decisive was quick.','decisive','adjective, not a noun: decision'],['The decide was quick.','decide','verb, not a noun: decision']],ua:'Рішення було швидким.'},
+ {o:[['She is a careful driver.'],['She is a care driver.','care','adjective: careful'],['She is a carefully driver.','carefully','adverb, not an adjective']],ua:'Вона уважна водійка.'},
+ {o:[['He speaks clearly.'],['He speaks clear.','clear','adverb: clearly'],['He speaks clearness.','clearness','noun, not an adverb']],ua:'Він говорить чітко.'},
+ {o:[['It was an impossible task.'],['It was an unpossible task.','unpossible','no such word: impossible'],['It was a impossible task.','a impossible','vowel sound: an']],ua:'Це було неможливе завдання.'}]};
+const WF_E9={id:'e9',type:'error',sec:'D',nocx:true,ins:{en:'Find the mistake and fix it.',ua:'Знайди помилку й виправ її.'},bank:[
+ {w:'She made a [decide] quickly.',fix:['a quick decision'],o:['a quick decision','a quick decide','a quickly decision'],full:'She made a quick decision.',ua:'Вона швидко ухвалила рішення.',why:{en:'a noun after a, with an adjective: quick decision',ua:'іменник після a з прикметником: quick decision'}},
+ {w:'It is [unpossible] to finish.',fix:['impossible'],o:['impossible','unpossible','inpossible'],full:'It is impossible to finish.',ua:'Це неможливо закінчити.',why:{en:'possible takes im-',ua:'possible приймає im-'}},
+ {w:'He spoke [friendly] to me.',fix:['in a friendly way'],o:['in a friendly way','friendlily','friendly way'],full:'He spoke to me in a friendly way.',ua:'Він говорив зі мною привітно.',why:{en:'friendly is an adjective',ua:'friendly — прикметник'}},
+ {w:'Read the text [careful].',fix:['carefully'],o:['carefully','careful','carefulness'],full:'Read the text carefully.',ua:'Прочитай текст уважно.',why:{en:'an adverb describes read',ua:'прислівник описує read'}},
+ {w:'Thank you for your [kind].',fix:['kindness'],o:['kindness','kindly','kinds'],full:'Thank you for your kindness.',ua:'Дякую за твою доброту.',why:{en:'after your we need a noun',ua:'після your потрібен іменник'}}]};
+const WF_K={id:'K',type:'sec',l:'K',h:{en:'Typical mistakes',ua:'Типові помилки'},nocx:true,pts:[{k:'when',en:'Read the wrong sentence and say it correctly. Then reveal the answer.',ua:'Прочитай неправильне речення й скажи його правильно. Потім відкрий відповідь.'}],
+ parts:[{t:'mist',n:5,bank:[
+  ['It is unpossible to do it.','It is impossible to do it.'],['She is a success designer.','She is a successful designer.'],['He speaks careful.','He speaks carefully.'],['I like your kindnes.','I like your kindness.'],['This was a enjoyable trip.','This was an enjoyable trip.']]}]};
+const WF_BLITZ=[
+ ['Thank you for your ___.','kindness','kind','kindly'],['It is ___ to finish today.','impossible','unpossible','possibly'],['She is very ___ at her job.','successful','success','successfully'],['Read it ___, please.','carefully','careful','care'],
+ ['That was a ___ price.','reasonable','reasoned','reasons'],['The film was ___.','enjoyable','enjoyment','enjoy'],['I ___ with you.','disagree','unagree','misagree'],['Please ___ the sentence.','rewrite','unwrite','misuse'],
+ ['I ___ the rules. Sorry!','misunderstood','unstood','disunderstood'],['🧠 a choice you make','decision','decide','decisive'],['🏆 having success','successful','successfully','successor'],['😔 not happy','unhappy','dishappy','unhappily'],
+ ['⛔ not possible','impossible','unpossible','inpossible'],['🧑‍🏫 a person who teaches','teacher','teaching','taught'],['🚗 slowly and carefully','carefully','careful','carefulness'],['🎉 very pleasant','enjoyable','enjoyment','enjoyed']].map(([q,...o])=>({q,o}));
+const WF_GAME={id:'g1',type:'game',kind:'blitz',em:'🔤',title:{en:'Word formation: 60 seconds',ua:'Word formation: 60 секунд'},rules:{en:'Pick the right form of the word. Keys 1 · 2 · 3 work too.',ua:'Обирай правильну форму слова. Можна клавішами 1 · 2 · 3.'},items:WF_BLITZ};
+const WF_CHAT={id:'J',type:'sec',l:'💬',h:{en:'Model conversations: an interview and a hard task',ua:'Зразки розмов: співбесіда і важке завдання'},nocx:true,
+ pts:[{k:'when',en:"First read them together. Find the <b>noun endings</b> (decision, kindness), the <b>adjectives</b> (successful, reasonable, enjoyable), the <b>adverb</b> (carefully) and the <b>prefixes</b> (unhappy, impossible, misunderstood). Then switch to <b>Role-play</b> and tell about a job or a study task.",ua:"Спершу прочитайте разом. Знайдіть <b>закінчення іменників</b> (decision, kindness), <b>прикметники</b> (successful, reasonable, enjoyable), <b>прислівник</b> (carefully) і <b>префікси</b> (unhappy, impossible, misunderstood). Потім перейдіть до <b>Role-play</b> і розкажіть про роботу або навчальне завдання."}],
+ parts:[{t:'chat',people:{A:{name:'Anna',em:'👩'},B:{name:'Max',em:'🧑'}},lines:[
+  ['A',"I had a successful interview today, but the decision will take a week.",'',"Сьогодні в мене була успішна співбесіда, але рішення буде за тиждень.","successful · decision"],
+  ['B',"That is good news! Were the questions reasonable?",'',"Це чудова новина! Питання були адекватні?","reasonable"],
+  ['A',"Yes, very. The manager was kind, and the work looks enjoyable.",'',"Так, дуже. Менеджер був добрим, і робота виглядає цікавою.","kind · enjoyable"],
+  ['B',"Read the contract carefully before you sign. It is impossible to change it later!",'',"Перед підписом уважно прочитай договір. Потім його неможливо змінити!","carefully · impossible"]]},
+  {t:'chat',people:{A:{name:'Nina',em:'👧'},B:{name:'Tom',em:'🧑'}},lines:[
+  ['A',"Did you finish the homework? It was impossible for me.",'',"Ти закінчив домашнє завдання? Для мене це було неможливо.","impossible"],
+  ['B',"No, I misunderstood the first task. But I read the text carefully, and the rest was easy.",'',"Ні, я неправильно зрозумів перше завдання. Але текст я прочитав уважно, а решта була легкою.","misunderstood · carefully"],
+  ['A',"Our teacher is very helpful. Her kindness helps a lot.",'',"Наш викладач дуже допомагає. Її доброта багато значить.","kindness"],
+  ['B',"Yes, she is a great teacher. Thank you for your help, by the way!",'',"Так, вона чудовий викладач. До речі, дякую за допомогу!","teacher · kindness"]]}]};
+const WF_S={id:'S',type:'speak',title:{en:'Work, study and feelings',ua:'Робота, навчання й почуття'},prevVocab:true,
+ grammar:["noun endings: decision, kindness, development","adjective endings: successful, enjoyable, careful","adverbs: carefully, clearly, in a friendly way","prefixes: unhappy, impossible, disagree, misunderstand"],earlier:["phrasal verbs 3: look after, run out of, put up with"],
+ prompts:{
+  general:{em:'🌍',q:"Tell about a decision you made recently. Was it reasonable? Did you read the information carefully? Was it enjoyable or difficult?"},
+  life:{em:'🌱',q:"Your week: What was the most enjoyable part? When did you feel unhappy? Who showed you kindness? What did you find impossible?"},
+  games:{em:'🎮',q:"A game: Which game is enjoyable for you? When did you misunderstand the rules? Who is a successful player you know? What did you decide to try?"},
+  series:{em:'🎬',q:"A series: Which character made a bad decision? Who is successful? When does the hero act carefully? Which scene felt impossible?"},
+  travel:{em:'✈️',q:"A trip: Was the hotel reasonable in price? What was the most enjoyable place? Did you misunderstand a sign? Who was kind to you?"},
+  it:{em:'💻',q:"Technology: Which app is enjoyable to use? When do you read the terms carefully? What did you rewrite on your computer? Is it impossible to work without it?"},
+  music:{em:'🎸',q:"Music: Which song is enjoyable for you? Who is a successful singer? Did you ever misunderstand the lyrics? What is a reasonable price for a concert ticket?"},
+  sport:{em:'🏅',q:"Sport: Which player is successful and why? When is it impossible to win? Do you train carefully? What decision did the coach make?"}}};
+BE_LESSONS['b1-wfm']={unit:'B1.1 · Block 10 · Prepositions & words',
+ lead:{en:'Word formation: noun, adjective and adverb endings, and the prefixes un-, im-, dis-, re-, mis-. How one base word becomes many words.',ua:'Word formation: закінчення іменників, прикметників і прислівників та префікси un-, im-, dis-, re-, mis-. Як одне базове слово стає кількома.'},minutes:'≈ 60 min · 7 steps',
+ homework:'Do the homework file. Then write 12 sentences: 3 with noun endings (-tion, -ness, -ment), 3 with adjective endings (-ful, -able, -less), 3 with adverbs (-ly) and 3 with prefixes (un-, im-, dis-, mis-).',
+ vocab:WF_VOCAB,
+ goals:{en:['<b>nouns</b>: -tion, -ment, -ness, -er','<b>adjectives</b>: -ful, -less, -able, -ous','<b>adverbs</b>: -ly and their traps','<b>prefixes</b>: un-, im-, dis-, re-, mis-'],ua:['<b>іменники</b>: -tion, -ment, -ness, -er','<b>прикметники</b>: -ful, -less, -able, -ous','<b>прислівники</b>: -ly і пастки','<b>префікси</b>: un-, im-, dis-, re-, mis-']},
+ blocks:[{...stage(0,'warm',1),sub:{en:'Words from the last lesson and a quick recap',ua:'Слова з минулого уроку і швидке повторення'}},{id:'W0',type:'warm',from:'b1-phv3'},WF_RECAP,
+  {...stage(0,'words',2),sub:{en:'8 words with new forms',ua:'8 слів з новими формами'}},wordsSec('W','b1-wfm',{en:'Eight words and their forms. Learn the base word together with its new form.',ua:'Вісім слів і їхні форми. Вчи базове слово разом з новою формою.'}),{...POOL.e15,id:'e15',sec:'W',easyUA:true},WF_V,
+  {...stage(0,'gram',3),min:'15 min',sub:{en:'Endings, adjectives, adverbs, prefixes',ua:'Закінчення, прикметники, прислівники, префікси'}},WF_A,WF_B,WF_C,WF_D,
+  {...stage(0,'prac',4),min:'20 min',sub:{en:'Choose, complete, correct',ua:'Вибір, доповнення, виправлення'}},WF_E1,WF_E2,WF_E3,WF_E4,WF_E5,WF_E6,WF_E7,WF_E8,WF_E9,WF_K,
+  stage(0,'game',5),WF_GAME,
+  stage(0,'speak',6),WF_CHAT,WF_S]};
+
+
 
 (()=>{if(TOPIC['b1-phv2'])return;
  const i=TOPICS.findIndex(t=>t.id==='b1-phv1');if(i<0)return;const t={...T('b1-phv2','B1',"Phrasal verbs 2 · travel, work, daily life",'grammar',true,false),unit:'B1.1 · Block 10 · Prepositions & words'};
+ TOPICS.splice(i+1,0,t);TOPIC[t.id]=t})();
+(()=>{if(TOPIC['b1-phv3'])return;
+ const i=TOPICS.findIndex(t=>t.id==='b1-phv2');if(i<0)return;const t={...T('b1-phv3','B1',"Phrasal verbs 3 · family, work, daily life",'grammar',true,false),unit:'B1.1 · Block 10 · Prepositions & words'};
+ TOPICS.splice(i+1,0,t);TOPIC[t.id]=t})();
+(()=>{if(TOPIC['b1-wfm'])return;
+ const i=TOPICS.findIndex(t=>t.id==='b1-phv3');if(i<0)return;const t={...T('b1-wfm','B1',"Word formation · endings and prefixes",'vocabulary',true,false),unit:'B1.1 · Block 10 · Prepositions & words'};
  TOPICS.splice(i+1,0,t);TOPIC[t.id]=t})();
 /* ===== B1 plan: grey draft cards for the lessons that are not built yet (so nothing is forgotten) ===== */
 const B1_PLAN=[
@@ -18774,6 +19204,7 @@ const B1_PLAN=[
 (()=>{if(TOPIC['b1-plan-pp'])return;const i=TOPICS.findIndex(t=>t.id==='b1-pp-since');const at=i>=0?i+1:TOPICS.length;
  const items=B1_PLAN.map((r,k)=>{const id='b1-plan-'+(typeof r[0]==='number'?r[0]:r[0]==='2↻'?'pp':'u'+k);const t={...T(id,'B1',(typeof r[0]==='number'?r[0]+' · ':'')+r[2],r[4],false),note:r[3],num:String(r[0]),block:r[1]};return t});
  TOPICS.splice(at,0,...items);items.forEach(t=>TOPIC[t.id]=t)})();
+(()=>{['b1-plan-38','b1-plan-39'].forEach(id=>{const d=TOPICS.findIndex(t=>t.id===id);if(d>=0)TOPICS.splice(d,1);delete TOPIC[id]})})();
 /* ================= A1 FROM ZERO · lesson 1: the alphabet & spelling =================
    One rich lesson per topic. Explanations in Ukrainian by default. Only what was shown is tested. */
 const A1_LETTERS=[
@@ -20752,7 +21183,7 @@ for(const [tid,c] of Object.entries(CONTENT)) for(const b of c.blocks) if(scorab
 for(const b of [...PP_CONTENT.blocks,...NEW_EX]) if(scorable(b)&&!EX['b1-pp-ps:'+b.id])EX['b1-pp-ps:'+b.id]=b;
 function vocabOf(tid){return (CONTENT[tid]&&CONTENT[tid].vocab)||PP_VOCAB}
 /* lessons that build on each other: words from earlier lessons come back */
-const SEQS=[PP_L,['b1-rev','b1-pp1','b1-pp2','b1-pp3','b1-pp4','b1-ppc','b1-ppf','b1-nar','b1-wgp','b1-fc','b1-tmc','b1-qst','b1-tag','b1-obl','b1-abl','b1-ded','b1-dpa','b1-hbt','b1-ust','b1-cn1','b1-cn2','b1-cn3','b1-pas1','b1-pas2','b1-rep1','b1-rep2','b1-rel1','b1-lnk1','b1-gvi1','b1-vpt1','b1-nns1','b1-qnt1','b1-rfl1','b1-cmp1','b1-adj1','b1-adv1','b1-prp1','b1-dpr1','b1-phv1','b1-phv2'],['a2-past-gram','a2-past-read','a2-past-listen','a2-past-use','a2-past-write','a2-past-speak','a2-ped','a2-comp','a2-count','a2-qnt','a2-too','a2-art','a2-pron','a2-poss','a2-adv','a2-dp','a2-psc','a2-wot','a2-some','a2-pre','a2-it','a2-phr','a2-dmg','a2-fut-gram','a2-fut-read','a2-fut-listen','a2-fut-use','a2-fut-write','a2-fut-speak','a2-modals-1','a2-modals-2','a2-sug','a2-cond1','a2-ving','a2-shop','a2-travel','a2-health','a2-phone','a2-rel','a2-pfi','a2-pco','a2-write','a2-link'],['a2-be-gram','a2-be-read','a2-be-listen','a2-be-use','a2-be-write','a2-be-speak','a2-ps-gram','a2-ps-read','a2-ps-listen','a2-ps-use','a2-ps-write','a2-ps-speak'],['zero-1','a1-hello','a1-read','a1-numbers','a1-wh','a1-this','a1-have','a1-desc','a1-country','a1-time','a1-dates','a1-imp','a1-like','a1-pcont','a1-pcont-rl','a1-pcont-ws','a1-can','a1-prep','a1-there','a1-dir','a1-food','a1-read2']];
+const SEQS=[PP_L,['b1-rev','b1-pp1','b1-pp2','b1-pp3','b1-pp4','b1-ppc','b1-ppf','b1-nar','b1-wgp','b1-fc','b1-tmc','b1-qst','b1-tag','b1-obl','b1-abl','b1-ded','b1-dpa','b1-hbt','b1-ust','b1-cn1','b1-cn2','b1-cn3','b1-pas1','b1-pas2','b1-rep1','b1-rep2','b1-rel1','b1-lnk1','b1-gvi1','b1-vpt1','b1-nns1','b1-qnt1','b1-rfl1','b1-cmp1','b1-adj1','b1-adv1','b1-prp1','b1-dpr1','b1-phv1','b1-phv2','b1-phv3','b1-wfm'],['a2-past-gram','a2-past-read','a2-past-listen','a2-past-use','a2-past-write','a2-past-speak','a2-ped','a2-comp','a2-count','a2-qnt','a2-too','a2-art','a2-pron','a2-poss','a2-adv','a2-dp','a2-psc','a2-wot','a2-some','a2-pre','a2-it','a2-phr','a2-dmg','a2-fut-gram','a2-fut-read','a2-fut-listen','a2-fut-use','a2-fut-write','a2-fut-speak','a2-modals-1','a2-modals-2','a2-sug','a2-cond1','a2-ving','a2-shop','a2-travel','a2-health','a2-phone','a2-rel','a2-pfi','a2-pco','a2-write','a2-link'],['a2-be-gram','a2-be-read','a2-be-listen','a2-be-use','a2-be-write','a2-be-speak','a2-ps-gram','a2-ps-read','a2-ps-listen','a2-ps-use','a2-ps-write','a2-ps-speak'],['zero-1','a1-hello','a1-read','a1-numbers','a1-wh','a1-this','a1-have','a1-desc','a1-country','a1-time','a1-dates','a1-imp','a1-like','a1-pcont','a1-pcont-rl','a1-pcont-ws','a1-can','a1-prep','a1-there','a1-dir','a1-food','a1-read2']];
 const seqOf=tid=>SEQS.find(q=>q.includes(tid));
 const wordsOf=t=>(CONTENT[t]&&CONTENT[t].vocab)||[];
 function vocabUpTo(tid){const q=seqOf(tid);return q?q.slice(0,q.indexOf(tid)+1).flatMap(wordsOf):PP_VOCAB}
@@ -22218,14 +22649,38 @@ function decodeProgressCode(code){const c=String(code||'').trim();if(!c.startsWi
 function lastLessonId(p){const e=Object.entries(p.progress||{}).filter(([k,v])=>v&&v.status);if(!e.length)return null;e.sort((a,b)=>String(b[1].date||'').localeCompare(String(a[1].date||'')));return e[0][0]}
 function openRestoreCode(){openModal(()=>{const ta=h('textarea',{rows:4,placeholder:'ERPR1:…',style:'width:100%'});const err=h('p',{style:'margin:0;color:var(--muted)'},'');
  const fi=h('input',{type:'file',accept:'.txt',onchange:async e=>{const f=e.target.files[0];if(f)ta.value=await f.text()}});
- const go=()=>{try{const d=decodeProgressCode(ta.value);const all=Store.students||{};const sid=Object.keys(all).find(k=>all[k]&&all[k].name===d.name);const id=sid||uid();const base=sid?all[sid]:blankStudent(d.name,d.level||'A1',[]);Store.save(id,{...base,name:d.name,level:d.level||base.level,progress:d.progress||{},mistakes:d.mistakes||[],words:d.words||[]});closeModal();setStudent(id);toast('Progress restored: '+d.name)}catch(e){err.textContent='This code is not valid.'}};
- return[h('h2',null,'Restore progress from a code'),h('p',{style:'margin:0'},'Paste the code or choose the file. If a student with this name already exists, their progress is replaced.'),ta,fi,err,h('div',{class:'foot',style:'margin:0'},h('button',{class:'btn primary',onclick:go},'Restore'),h('button',{class:'btn ghost',onclick:closeModal},'Cancel'))]})}
+ const go=()=>{const tx=String(ta.value||'').trim();if(tx.startsWith('{')){try{const bk=JSON.parse(tx);const all=Store.students||{};let n=0;Object.values(bk).forEach(st=>{if(!st||!st.name)return;const sid=Object.keys(all).find(k=>all[k]&&all[k].name===st.name)||uid();Store.save(sid,{...st,id:sid});n++});closeModal();render();toast('Restored '+n+' students');return}catch(e){err.textContent='This backup file is not valid.';return}}try{const d=decodeProgressCode(ta.value);const all=Store.students||{};const sid=Object.keys(all).find(k=>all[k]&&all[k].name===d.name);const id=sid||uid();const base=sid?all[sid]:blankStudent(d.name,d.level||'A1',[]);Store.save(id,{...base,name:d.name,level:d.level||base.level,progress:d.progress||{},mistakes:d.mistakes||[],words:d.words||[]});closeModal();setStudent(id);toast('Progress restored: '+d.name)}catch(e){err.textContent='This code is not valid.'}};
+ return[h('h2',null,'Restore from a code or a backup file'),h('p',{style:'margin:0'},'Paste a progress code, or choose a progress file or a full backup file. If a student with this name already exists, their progress is replaced.'),ta,fi,err,h('div',{class:'foot',style:'margin:0'},h('button',{class:'btn primary',onclick:go},'Restore'),h('button',{class:'btn ghost',onclick:closeModal},'Cancel'))]})}
+const MONTHS_EN=['january','february','march','april','may','june','july','august','september','october','november','december'];
+function parseSummary(text){const L=String(text||'').split(/\n/).map(x=>x.trim());
+ const tl=L.find(x=>/^Topic:/i.test(x));if(!tl)throw new Error('topic');
+ const tt=tl.replace(/^Topic:\s*/i,'').replace(/\s*\([^)]*\)\s*$/,'').trim().toLowerCase();
+ const t=TOPICS.find(x=>String(x.title).trim().toLowerCase()===tt);if(!t)throw new Error('topic not found');
+ const sc=(text.match(/Score:\s*(\d+)\s*\/\s*(\d+)/i)||[]);if(!sc[1])throw new Error('score');
+ const dm=(text.match(/(\d{1,2})\s+([A-Za-z]+)/)||[]);const mi=MONTHS_EN.indexOf(String(dm[2]||'').toLowerCase());
+ const now=new Date();const y=now.getFullYear();const date=mi>=0?`${y}-${String(mi+1).padStart(2,'0')}-${String(+dm[1]).padStart(2,'0')}`:today();
+ const i=L.findIndex(x=>/^To review:/i.test(x));const mist=[];
+ if(i>=0)for(let k=i+1;k<L.length&&!/^Homework/i.test(L[k]);k++){if(!L[k].includes('→'))continue;const [a,b]=L[k].split('→').map(x=>x.trim());mist.push({prompt:a.replace(/^🔊\s*/,''),given:'',correct:b})}
+ return {topicId:t.id,score:+sc[1],total:+sc[2],date,mistakes:mist}}
+function addHomeworkFile(p,text){const m=String(text).match(/window\.HW=([\s\S]*?)<\/script>/);if(!m)throw new Error('no data');const d=JSON.parse(m[1]);
+ if(!d||!d.name)throw new Error('no name');
+ if(String(d.name).trim().toLowerCase()!==String(p.name).trim().toLowerCase()){toast('This homework is for '+d.name+'. Select that student first');return}
+ const sts=Object.values(d.stats||{});const ok=sts.reduce((a,v)=>a+(+v.ok||0),0),total=sts.reduce((a,v)=>a+(+v.total||0),0);
+ const date=String(d.date||new Date().toISOString()).slice(0,10);
+ const mis=(d.mistakes||[]).map(x=>({id:uid(),exKey:x.exKey?String(x.exKey).replace(/~.*$/,''):null,topicId:d.topicId,prompt:x.prompt,given:x.given||'',correct:x.correct||'',date,note:'homework file',resolved:false}));
+ const s=Store.get(p.id);
+ s.mistakes=(s.mistakes||[]).concat(mis).slice(-300);
+ s.lessons=(s.lessons||[]).concat({date,topicId:d.topicId,kind:'homework',score:ok,total:total,mistakes:mis.length,medals:[],speak:null,secStats:d.stats||{},via:'homework file'}).slice(-400);
+ Store.save(p.id,s);toast(`Homework added: ${ok}/${total}, ${mis.length} mistakes`);render()}
 function progressTools(p){const box=h('div',{class:'section',style:'margin-top:18px'});
  box.append(h('h3',null,'Progress tools'));
  box.append(h('div',{class:'foot',style:'margin:0;flex-wrap:wrap'},
   h('button',{class:'btn',onclick:()=>copyText(progressCode(p),'Progress code copied. Paste it on your other device')},'📋 Copy progress code'),
   h('button',{class:'btn',onclick:openRestoreCode},'📥 Restore from code'),
   h('button',{class:'btn',onclick:()=>saveFile(`all-students-${today()}.json`,JSON.stringify(Store.students||{},null,1),'application/json')},'💾 Back up all students')));
+ const sumBox=h('textarea',{rows:5,placeholder:'Paste the lesson summary here',style:'width:100%'});
+ box.append(h('h3',null,'Add homework file'),h('p',{style:'margin:0;color:var(--muted)'},'Choose the homework file (.html) the student sent. Its mistakes and results go to this student.'),h('input',{type:'file',accept:'.html,.htm',onchange:async e=>{const f=e.target.files[0];if(!f)return;try{addHomeworkFile(p,await f.text())}catch(er){toast('Could not read this homework file')}e.target.value=''}}));
+ box.append(h('h3',null,'Add a lesson summary'),sumBox,h('div',{class:'foot',style:'margin:0'},h('button',{class:'btn',onclick:()=>{try{const o=parseSummary(sumBox.value);importLesson(p.id,o);sumBox.value=''}catch(e){toast('Could not read the summary. Check the Topic and Score lines')}}},'Add to progress and mistakes')));
  const last=lastLessonId(p);
  if(last){const t=TOPIC[last]?TOPIC[last].title:last;
   if(PT.step==='drop'){box.append(h('div',{class:'banner',style:'margin-top:10px'},`Remove the progress of «${t}» for ${p.name}? Make a backup first.`),h('div',{class:'foot',style:'margin-top:8px'},h('button',{class:'btn primary',onclick:()=>{delete p.progress[last];Store.save(p.id,p);PT.step='';render()}},'Yes, remove'),h('button',{class:'btn ghost',onclick:()=>{PT.step='';render()}},'No')))}
